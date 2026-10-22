@@ -526,6 +526,107 @@ section[id]{scroll-margin-top:96px}
 #pn-contenido .bar i{background:#FF4D8D}
 #pn-contenido .play{border-left-color:#FF4D8D}
 
+
+/* ===== Demos de juegos enriquecidos ===== */
+.gstage{position:relative;padding:12px 26px}
+.mbar .brand{display:inline-flex;align-items:center;gap:7px}
+.mbar .brand i{font-style:normal;width:22px;height:22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.mbar{padding:16px 14px 10px;font-size:14px}
+.pop{position:absolute;z-index:3;width:178px;border-radius:16px;padding:10px 12px 12px;font-size:12.5px;line-height:1.35;box-shadow:0 18px 40px rgba(39,48,107,.24);animation:popcyc 7s ease-in-out infinite;text-align:left}
+.pop b{font-family:Nunito,sans-serif;font-weight:900;font-size:14px;display:block}
+.pop .tag{display:inline-block;font-family:Nunito,sans-serif;font-weight:900;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;margin-bottom:5px}
+.pop.cli{left:-6px;bottom:96px;background:#fff;color:var(--ink)}
+.pop.cli .tag{background:#E3F6EE;color:#007A50}
+.pop.own{right:-6px;top:110px;background:var(--ink);color:#fff;animation-delay:2.2s}
+.pop.own .tag{background:#FFC93C;color:var(--ink)}
+@keyframes popcyc{0%,6%{opacity:0;transform:translateY(14px) scale(.88)}14%,62%{opacity:1;transform:none}72%,100%{opacity:0;transform:translateY(-10px) scale(.95)}}
+.gcard:hover .pop{animation-play-state:paused;opacity:1;transform:none}
+.bars{display:flex;align-items:flex-end;gap:5px;height:40px;margin-top:6px}
+.bars i{flex:1;border-radius:4px 4px 0 0;background:#5FE0AE;height:var(--h);animation:grow 7s ease-in-out infinite;animation-delay:2.2s;transform-origin:bottom}
+@keyframes grow{0%,14%{transform:scaleY(.1)}30%,100%{transform:scaleY(1)}}
+.leads{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.leads i{font-style:normal;font-size:11.5px;background:rgba(255,255,255,.1);border-radius:7px;padding:4px 7px;animation:slidein 7s ease infinite;animation-delay:2.4s}
+.leads i:nth-child(2){animation-delay:2.7s}.leads i:nth-child(3){animation-delay:3s}
+@keyframes slidein{0%,12%{opacity:0;transform:translateX(14px)}20%,100%{opacity:1;transform:none}}
+.pop .big{display:block;font-family:Nunito,sans-serif;font-weight:900;font-size:30px;color:#5FE0AE;line-height:1.1}
+.pop small{color:#C9CBD3}
+.hbars{display:flex;flex-direction:column;gap:5px;margin-top:6px}
+.hbars i{font-style:normal;font-size:11px;position:relative;padding:3px 7px;border-radius:6px;overflow:hidden;z-index:0}
+.hbars i::before{content:"";position:absolute;inset:0;width:var(--w);background:rgba(95,224,174,.45);z-index:-1;border-radius:6px;animation:barw 7s ease infinite;animation-delay:2.3s;transform-origin:left}
+@keyframes barw{0%,14%{transform:scaleX(.05)}32%,100%{transform:scaleX(1)}}
+/* contadores animados */
+@property --n{syntax:"<integer>";initial-value:0;inherits:false}
+.cnt{counter-reset:n var(--n)}.cnt::after{content:counter(n)}
+.c142{animation:n142 6s ease-out infinite}@keyframes n142{0%{--n:0}70%,100%{--n:142}}
+.c1240{animation:n1240 7s ease-out infinite;animation-delay:2.2s}@keyframes n1240{0%,14%{--n:0}55%,100%{--n:1240}}
+/* café */
+.meter{align-self:stretch;margin:12px 14px 0;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700}
+.meter div{flex:1;height:8px;border-radius:5px;background:rgba(59,36,20,.15);overflow:hidden}
+.meter i{display:block;height:100%;background:#6F4E37;animation:fillw 4s ease-in-out infinite}
+@keyframes fillw{0%{width:5%}55%,82%{width:98%}100%{width:5%}}
+.cup.sm{margin-top:34px;width:104px;height:120px}
+.cup.sm .handle{right:-24px;top:26px;width:26px;height:48px}
+.mlb{align-self:stretch;margin:14px 14px 0;display:flex;flex-direction:column;gap:4px}
+.mlb div{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;background:rgba(255,255,255,.6);border-radius:8px;padding:5px 8px}
+.mlb b{width:18px;height:18px;border-radius:50%;background:var(--hl);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px}
+.mlb em{margin-left:auto;font-style:normal}
+.mlb .me{background:var(--hl);color:#fff}.mlb .me b{background:#fff;color:var(--hl)}
+.ticket{position:absolute;left:14px;right:14px;bottom:14px;background:#fff;border:2px dashed var(--tk);border-radius:12px;padding:8px 10px;text-align:center;font-size:12px;animation:ticket 4s ease-in-out infinite}
+.ticket strong{display:block;font-family:Nunito,sans-serif;font-weight:900;font-size:13px}
+.ticket small{font-size:10.5px;opacity:.8}
+@keyframes ticket{0%,55%{transform:translateY(120%);opacity:0}65%,92%{transform:none;opacity:1}100%{transform:translateY(120%);opacity:0}}
+/* gym */
+.ring.sm{margin-top:14px;width:120px;height:120px}
+.ring.sm div b{font-size:36px}
+.race{align-self:stretch;margin:10px 14px 0;font-size:10.5px;font-weight:700}
+.race div{height:8px;border-radius:5px;background:rgba(255,255,255,.35);overflow:hidden;margin-top:4px;position:relative}
+.race div::after{content:"";position:absolute;left:78%;top:-2px;bottom:-2px;width:2px;background:#fff}
+.race i{display:block;height:100%;background:#231F20;animation:barA 6s ease-out infinite}
+@keyframes barA{0%{width:4%}70%,100%{width:96%}}
+.live{position:relative;align-self:stretch;margin:10px 14px 0;height:96px}
+.live-t{display:inline-flex;align-items:center;gap:5px;font-family:Nunito,sans-serif;font-weight:900;font-size:10px}
+.live-t i{width:7px;height:7px;border-radius:50%;background:#fff;animation:recb 1s infinite}
+.lrow{position:absolute;left:0;right:0;height:22px;display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;background:rgba(255,255,255,.4);border-radius:7px;padding:0 8px}
+.lrow b{width:16px;height:16px;border-radius:50%;background:#231F20;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:9px}
+.lrow em{margin-left:auto;font-style:normal}
+.lrow.me{background:#231F20;color:#fff}.lrow.me b{background:#FF6B2C}
+.r1{animation:lr1 6s ease-in-out infinite}.r2{animation:lr2 6s ease-in-out infinite}.r3{animation:lr3 6s ease-in-out infinite}
+@keyframes lr1{0%,45%{top:18px}60%,100%{top:44px}}
+@keyframes lr2{0%,45%{top:44px}60%,100%{top:70px}}
+@keyframes lr3{0%,45%{top:70px}60%,100%{top:18px}}
+.tapbtn.sm{width:78px;height:78px;margin-bottom:16px}
+.tapbtn.sm .tapcore{font-size:16px;box-shadow:0 6px 0 #C2410C}
+/* moda */
+.mbar .tick::after{content:"09";animation:tickn 4s steps(1) infinite}
+@keyframes tickn{0%{content:"09"}25%{content:"08"}50%{content:"07"}75%{content:"06"}}
+.machine.sm{margin-top:28px;padding:10px}
+.machine.sm .reel{width:52px;height:64px}
+.machine.sm .reel>div>div{height:64px}
+.vip{margin-top:18px;font-size:12px;font-weight:700;background:rgba(255,77,141,.18);border:1px solid #FF4D8D;border-radius:999px;padding:6px 12px}
+.vip b{color:#FF4D8D}
+.hearts-up{position:relative;width:100%;height:0}
+.hearts-up i{position:absolute;bottom:0;width:14px;height:14px;background:#FF4D8D;transform:rotate(45deg);animation:hup 3s ease-in infinite}
+.hearts-up i::before,.hearts-up i::after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:#FF4D8D}
+.hearts-up i::before{left:-7px}.hearts-up i::after{top:-7px}
+.hearts-up i:nth-child(1){left:22%}.hearts-up i:nth-child(2){left:52%;animation-delay:1s}.hearts-up i:nth-child(3){left:78%;animation-delay:2s}
+@keyframes hup{0%{opacity:0;transform:translateY(40px) rotate(45deg) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translateY(-90px) rotate(45deg) scale(1)}}
+.soon{position:absolute;left:14px;right:14px;bottom:14px;font-size:10.5px;font-weight:700;color:#BBB}
+.soon div{display:flex;gap:6px;margin-top:5px}
+.soon i{flex:1;height:44px;border-radius:10px;opacity:.85;filter:blur(3px);animation:unblur 4s ease-in-out infinite}
+.soon i:nth-child(2){animation-delay:.4s}.soon i:nth-child(3){animation-delay:.8s}
+@keyframes unblur{0%,50%{filter:blur(4px)}70%,90%{filter:blur(0)}100%{filter:blur(4px)}}
+/* tienda */
+.tbar{align-self:stretch;margin:10px 14px 0;height:6px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden}
+.tbar i{display:block;height:100%;background:#FFC93C;animation:tshrink 8s linear infinite}
+@keyframes tshrink{from{width:100%}to{width:0}}
+#memo{margin-top:16px;grid-template-columns:repeat(3,52px);gap:8px}
+#memo .card8{width:52px;height:58px}
+.pcard{position:absolute;left:12px;right:12px;bottom:14px;display:flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border-radius:14px;padding:8px;box-shadow:0 8px 20px rgba(0,0,0,.25);animation:ticket 4.5s ease-in-out infinite}
+.pthumb{width:40px;height:40px;border-radius:10px;background:#FFE8F0;display:flex;align-items:center;justify-content:center}
+.pinfo{display:flex;flex-direction:column;font-size:11px;line-height:1.2}.pinfo b{font-family:Nunito,sans-serif;font-weight:900;font-size:13px}.pinfo s{opacity:.5}
+.pbtn{margin-left:auto;background:#4B2FD1;color:#fff;font-family:Nunito,sans-serif;font-weight:900;font-size:11px;padding:6px 10px;border-radius:8px}
+@media (max-width:600px){.gstage{padding:12px 18px}.pop{width:160px;font-size:12px}}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -613,49 +714,80 @@ section[id]{scroll-margin-top:96px}
       <p class="lead rv">Algunos ejemplos. Cada giro tiene su reto y diseñamos el juego para resolverlo.</p>
     </div>
     <div class="ggrid">
+
       <figure class="gcard rv">
-        <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#F5E6D3">
-          <div class="mbar" style="background:#6F4E37;color:#F5E6D3">LATTE PERFECTO<b style="background:#F5E6D3;color:#3B2414">x3</b></div>
-          <div class="cup">
-            <span class="steam" style="left:30px"></span><span class="steam" style="left:62px;animation-delay:.7s"></span><span class="steam" style="left:94px;animation-delay:1.4s"></span>
-            <div class="cup-body"><div class="coffee"></div><div class="line"></div></div>
-            <div class="handle"></div>
-            <svg width="40" height="34" viewBox="0 0 24 22" style="position:absolute;left:46px;top:26px;animation:heart 4s ease-in-out infinite"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z" fill="#fff" stroke="#F3D9B1" stroke-width="2"/></svg>
-          </div>
-          <div class="toast" style="margin-top:34px;background:#3B2414;color:#F5E6D3">¡Perfecto! Café gratis</div>
-        </div></div>
+        <div class="gstage">
+          <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#F5E6D3;color:#3B2414">
+            <div class="mbar" style="background:#6F4E37;color:#F5E6D3"><span class="brand"><i style="background:#F5E6D3;color:#6F4E37">T</i>CAFÉ LA TAZA</span><b style="background:#F5E6D3;color:#3B2414">RACHA 3</b></div>
+            <div class="meter"><span>Precisión</span><div><i></i></div><em>98%</em></div>
+            <div class="cup sm">
+              <span class="steam" style="left:24px"></span><span class="steam" style="left:50px;animation-delay:.7s"></span><span class="steam" style="left:76px;animation-delay:1.4s"></span>
+              <div class="cup-body"><div class="coffee"></div><div class="line"></div></div>
+              <div class="handle"></div>
+              <svg width="34" height="28" viewBox="0 0 24 22" style="position:absolute;left:38px;top:20px;animation:heart 4s ease-in-out infinite"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z" fill="#fff" stroke="#F3D9B1" stroke-width="2"/></svg>
+            </div>
+            <div class="mlb" style="--hl:#6F4E37"><div><b>1</b>Sofi<em>12 tazas</em></div><div class="me"><b>2</b>Tú<em>11 tazas</em></div><div><b>3</b>Diego<em>9 tazas</em></div></div>
+            <div class="ticket" style="--tk:#3B2414"><strong>CUPÓN · Café gratis</strong><small>Válido hoy de 4 a 6 pm</small></div>
+          </div></div>
+          <div class="pop cli"><span class="tag">Tu cliente gana</span><b>¡Café gratis!</b> Lo canjea hoy en tu sucursal.</div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Visitas de 4 a 6 pm</b><span class="bars"><i style="--h:30%"></i><i style="--h:45%"></i><i style="--h:60%"></i><i style="--h:90%"></i></span></div>
+        </div>
         <figcaption><strong>Cafetería</strong><span class="cap">Llena tus horas bajas</span></figcaption>
       </figure>
 
       <figure class="gcard rv">
-        <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#FF6B2C;color:#231F20">
-          <div class="mbar" style="background:#231F20;color:#fff">RETO 30 SEG<b style="background:#FF6B2C;color:#231F20">RÉCORD 128</b></div>
-          <div class="ring"><svg width="150" height="150" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="50" cy="50" r="42" fill="none" stroke="#231F20" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" style="animation:ringA 5s linear infinite"/></svg><div><b>142</b>toques</div></div>
-          <div class="toast" style="margin-top:16px;background:#fff;animation-duration:5s">¡Nuevo récord! 7 días gratis</div>
-          <div class="tapbtn"><span class="ripple"></span><span class="tapcore">¡TOCA!</span></div>
-        </div></div>
+        <div class="gstage">
+          <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#FF6B2C;color:#231F20">
+            <div class="mbar" style="background:#231F20;color:#fff"><span class="brand"><i style="background:#FF6B2C;color:#231F20">F</i>FIT ZONE</span><b style="background:#FF6B2C;color:#231F20">0:12</b></div>
+            <div class="ring sm"><svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="50" cy="50" r="42" fill="none" stroke="#231F20" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" style="animation:ringA 6s linear infinite"/></svg><div><b class="cnt c142"></b>toques</div></div>
+            <div class="race"><span>Récord del gym · 128</span><div><i></i></div></div>
+            <div class="live"><span class="live-t"><i></i>EN VIVO</span>
+              <div class="lrow r1"><b>A</b>Andrea<em>131</em></div>
+              <div class="lrow r2"><b>M</b>Marco<em>125</em></div>
+              <div class="lrow r3 me"><b>T</b>Tú<em>142</em></div>
+            </div>
+            <div class="tapbtn sm"><span class="ripple"></span><span class="tapcore">¡TOCA!</span></div>
+          </div></div>
+          <div class="pop cli"><span class="tag">Tu cliente gana</span><b>Pase de 7 días gratis</b> y su clase de prueba agendada.</div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Prospectos nuevos</b><span class="leads"><i>Andrea · WhatsApp ✓</i><i>Marco · WhatsApp ✓</i><i>Tú · WhatsApp ✓</i></span></div>
+        </div>
         <figcaption><strong>Gimnasio</strong><span class="cap">Convierte curiosos en socios</span></figcaption>
       </figure>
 
       <figure class="gcard rv">
-        <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#111;color:#fff">
-          <div class="mbar" style="background:#FF4D8D;color:#111">DROP MATCH<b style="background:#111;color:#FF4D8D">NUEVO</b></div>
-          <div class="machine">
-            <div class="lights"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="reels" id="reels"></div>
-          </div>
-          <div class="toast" style="margin-top:36px;background:#FF4D8D;color:#111;animation-duration:3.2s">¡Outfit completo!<br>Acceso anticipado</div>
-          <span class="confetti" style="left:10%;background:#FF4D8D;animation-delay:-.2s"></span><span class="confetti" style="left:24%;background:#FFD23F;animation-delay:-1.1s"></span><span class="confetti" style="left:38%;background:#3A86FF;animation-delay:-2s"></span><span class="confetti" style="left:52%;background:#9BD12B;animation-delay:-.6s"></span><span class="confetti" style="left:66%;background:#FF4D8D;animation-delay:-1.6s"></span><span class="confetti" style="left:80%;background:#FFD23F;animation-delay:-2.6s"></span><span class="confetti" style="left:92%;background:#3A86FF;animation-delay:-.9s"></span>
-        </div></div>
+        <div class="gstage">
+          <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#111;color:#fff">
+            <div class="mbar" style="background:#FF4D8D;color:#111"><span class="brand"><i style="background:#111;color:#FF4D8D">N</i>NOVA</span><b style="background:#111;color:#FF4D8D">DROP 02:14:<span class="tick"></span></b></div>
+            <div class="machine sm">
+              <div class="lights"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="reels">
+                <div class="reel"><div style="animation-duration:1.2s"><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M8 3l-5 4 2 4 2-1v11h10V10l2 1 2-4-5-4a4 4 0 0 1-8 0z" fill="#FF4D8D" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M8 3l-5 4 2 4 2-1v11h10V10l2 1 2-4-5-4a4 4 0 0 1-8 0z" fill="#9BD12B" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M8 3l-5 4 2 4 2-1v11h10V10l2 1 2-4-5-4a4 4 0 0 1-8 0z" fill="#3A86FF" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M8 3l-5 4 2 4 2-1v11h10V10l2 1 2-4-5-4a4 4 0 0 1-8 0z" fill="#FF4D8D" stroke="#111"/></svg></div></div></div>
+                <div class="reel"><div style="animation-duration:1.6s"><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M7 3h10l1 8-2 10h-3l-1-8-1 8H8L6 11z" fill="#3A86FF" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M7 3h10l1 8-2 10h-3l-1-8-1 8H8L6 11z" fill="#FF4D8D" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M7 3h10l1 8-2 10h-3l-1-8-1 8H8L6 11z" fill="#9BD12B" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M7 3h10l1 8-2 10h-3l-1-8-1 8H8L6 11z" fill="#3A86FF" stroke="#111"/></svg></div></div></div>
+                <div class="reel"><div style="animation-duration:2s"><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M3 15c3 0 5-4 7-4l3 3c2 0 5 1 8 2v3H3z" fill="#9BD12B" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M3 15c3 0 5-4 7-4l3 3c2 0 5 1 8 2v3H3z" fill="#3A86FF" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M3 15c3 0 5-4 7-4l3 3c2 0 5 1 8 2v3H3z" fill="#FF4D8D" stroke="#111"/></svg></div><div><svg width="36" height="36" viewBox="0 0 24 24"><path d="M3 15c3 0 5-4 7-4l3 3c2 0 5 1 8 2v3H3z" fill="#9BD12B" stroke="#111"/></svg></div></div></div>
+              </div>
+            </div>
+            <div class="vip">Estás en la lista VIP <b>#128</b></div>
+            <div class="hearts-up"><i></i><i></i><i></i></div>
+            <div class="soon"><span>Próximamente</span><div><i style="background:#FF4D8D"></i><i style="background:#9BD12B"></i><i style="background:#3A86FF"></i></div></div>
+            <span class="confetti" style="left:12%;background:#FF4D8D;animation-delay:-.2s"></span><span class="confetti" style="left:38%;background:#FFD23F;animation-delay:-1.1s"></span><span class="confetti" style="left:64%;background:#3A86FF;animation-delay:-2s"></span><span class="confetti" style="left:88%;background:#9BD12B;animation-delay:-.6s"></span>
+          </div></div>
+          <div class="pop cli"><span class="tag">Tu cliente gana</span><b>Acceso anticipado</b> y 15% en el lanzamiento.</div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Lista de espera</b><span class="big cnt c1240"></span><small>personas listas para comprar</small></div>
+        </div>
         <figcaption><strong>Marca de ropa</strong><span class="cap">Que tu drop se agote</span></figcaption>
       </figure>
 
       <figure class="gcard rv">
-        <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#6C4CF5;color:#fff">
-          <div class="mbar" style="background:#4B2FD1">MEMORAMA<b style="background:#fff;color:#4B2FD1">0:24</b></div>
-          <div class="memo" id="memo"></div>
-          <div class="toast" style="margin-top:22px;background:#fff;color:#4B2FD1;animation-duration:4.5s">¡Par! Cupón 10%</div>
-        </div></div>
+        <div class="gstage">
+          <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#6C4CF5;color:#fff">
+            <div class="mbar" style="background:#4B2FD1"><span class="brand"><i style="background:#FFC93C;color:#4B2FD1">M</i>MERCADITO</span><b style="background:#fff;color:#4B2FD1">0:24</b></div>
+            <div class="tbar"><i></i></div>
+            <div class="memo" id="memo"></div>
+            <div class="pcard"><span class="pthumb"><svg width="30" height="30" viewBox="0 0 44 28"><path d="M3 7h14l6 6 14 2a5 5 0 0 1 5 5v3H3z" fill="#FF4D8D" stroke="#231F20" stroke-width="2.2" stroke-linejoin="round"/></svg></span><span class="pinfo"><b>Tenis Runner</b><small>$899 · <s>$999</s></small></span><span class="pbtn">Ver</span></div>
+          </div></div>
+          <div class="pop cli"><span class="tag">Tu cliente gana</span><b>Cupón de 10%</b> en el producto que encontró.</div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Lo más visto hoy</b><span class="hbars"><i style="--w:92%">Tenis</i><i style="--w:70%">Gorras</i><i style="--w:48%">Mochilas</i></span></div>
+        </div>
         <figcaption><strong>Tienda en línea</strong><span class="cap">Que recorran tu catálogo</span></figcaption>
       </figure>
     </div>
@@ -822,17 +954,8 @@ section[id]{scroll-margin-top:96px}
   for (var k = 0; k < 4; k++) items.forEach(function(x){ t += '<span>' + x + '<i></i></span>'; });
   document.getElementById('ticker').innerHTML = t;
 
-  // Carretes (moda)
-  var reels = [
-    {d:1.2, p:'M8 3l-5 4 2 4 2-1v11h10V10l2 1 2-4-5-4a4 4 0 0 1-8 0z', c:['#FF4D8D','#9BD12B','#3A86FF','#FF4D8D']},
-    {d:1.6, p:'M7 3h10l1 8-2 10h-3l-1-8-1 8H8L6 11z', c:['#3A86FF','#FF4D8D','#9BD12B','#3A86FF']},
-    {d:2.0, p:'M3 15c3 0 5-4 7-4l3 3c2 0 5 1 8 2v3H3z', c:['#9BD12B','#3A86FF','#FF4D8D','#9BD12B']}
-  ], rh = '';
-  reels.forEach(function(r){ rh += '<div class="reel"><div style="animation-duration:' + r.d + 's">' + r.c.map(function(c){ return '<div><svg width="40" height="40" viewBox="0 0 24 24"><path d="' + r.p + '" fill="' + c + '" stroke="#111" stroke-width="1"/></svg></div>'; }).join('') + '</div></div>'; });
-  document.getElementById('reels').innerHTML = rh;
-
   // Memorama
-  var cols = ['#FF4D8D','#3A86FF','#9BD12B','#FFB703','#FF4D8D','#3A86FF','#9BD12B','#FFB703','#E63946','#E63946','#14B8A6','#14B8A6'], mh = '';
+  var cols = ['#FF4D8D','#3A86FF','#9BD12B','#FFB703','#FF4D8D','#3A86FF','#9BD12B','#FFB703','#14B8A6'], mh = '';
   cols.forEach(function(c, k){ mh += '<div class="card8" style="animation-delay:-' + ((k * 0.37) % 4.5).toFixed(2) + 's"><div class="front"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z" fill="' + c + '"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="' + c + '" stroke-width="2"/></svg></div><div class="back">8</div></div>'; });
   document.getElementById('memo').innerHTML = mh;
 
