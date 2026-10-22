@@ -1620,7 +1620,11 @@ section.cta{margin-top:28px}
     if (stacked) { if (card.nextElementSibling !== drawer) card.after(drawer); }
     else if (drawer.parentNode !== home) grid.after(drawer);
     drawer.classList.add('open');
-    if (scroll && mq('(max-width:820px)')) setTimeout(function(){ drawer.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 300);
+    if (scroll && mq('(max-width:820px)')) setTimeout(function(){
+      var bar = document.getElementById('topbar'), off = (bar ? bar.getBoundingClientRect().height : 70) + 12;
+      var y = drawer.getBoundingClientRect().top + window.scrollY - off;
+      window.scrollTo({top: y, behavior: 'smooth'});
+    }, 580);
   }
   function closePn(){ cur = null; drawer.classList.remove('open'); tabs.forEach(function(t){ t.setAttribute('aria-selected','false'); t.setAttribute('aria-expanded','false'); }); }
   var mq = function(q){ return window.matchMedia ? window.matchMedia(q).matches : false; };
