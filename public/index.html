@@ -864,6 +864,13 @@ section[id]{scroll-margin-top:96px}
 @keyframes tabc{0%{background:#FFC93C;color:#231F20}25%,100%{background:rgba(255,255,255,.06);color:#9AA3C7}}
 @media (max-width:600px){.wk-mock{margin:20px 18px 0}.wk-txt{padding:20px 22px 26px}}
 
+
+/* snake: tono claro del color de cada tarjeta, más lento */
+.services .scard{--glow:color-mix(in srgb,var(--c) 45%,#fff)}
+.services .scard::after,.services .scard[aria-selected="true"]::after{
+  background:conic-gradient(from var(--ang),transparent 0 60%,var(--glow) 76%,#fff 83%,var(--glow) 90%,transparent 100%);
+  filter:drop-shadow(0 0 5px var(--glow)) drop-shadow(0 0 12px var(--glow));animation-duration:4.5s}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
