@@ -998,7 +998,7 @@ section[id]{scroll-margin-top:96px}
 
   // Piezas flotantes (ingredientes, monedas, estrellas)
   var S2 = function(inner, w){ return '<svg width="' + (w||40) + '" height="' + (w||40) + '" viewBox="0 0 40 40">' + inner + '</svg>'; };
-  var pad = S2('<rect x="3" y="11" width="34" height="18" rx="9" fill="#27306B"/><path d="M11 17v6M8 20h6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="27" cy="18" r="2.2" fill="#5FE0AE"/><circle cx="31" cy="22" r="2.2" fill="#FFC93C"/>', 48);
+  var gpad = S2('<rect x="3" y="11" width="34" height="18" rx="9" fill="#27306B"/><path d="M11 17v6M8 20h6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="27" cy="18" r="2.2" fill="#5FE0AE"/><circle cx="31" cy="22" r="2.2" fill="#FFC93C"/>', 48);
   var cursor = S2('<path d="M9 5l22 13-10 2.5 6 11-4 2-6-11-8 7z" fill="#fff" stroke="#27306B" stroke-width="2.4" stroke-linejoin="round"/>', 38);
   var play = S2('<circle cx="20" cy="20" r="17" fill="#00AF72"/><path d="M16 12l12 8-12 8z" fill="#fff"/>', 40);
   var code = S2('<rect x="2" y="6" width="36" height="28" rx="8" fill="#6C4CF5"/><path d="M15 15l-5 5 5 5M25 15l5 5-5 5M22 13l-4 14" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>', 44);
@@ -1007,11 +1007,11 @@ section[id]{scroll-margin-top:96px}
   var chat = S2('<path d="M6 8h28a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H17l-8 6v-6H6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" fill="#fff" stroke="#00AF72" stroke-width="2.4"/><circle cx="13" cy="18" r="2" fill="#00AF72"/><circle cx="20" cy="18" r="2" fill="#00AF72"/><circle cx="27" cy="18" r="2" fill="#00AF72"/>', 42);
   var heart = S2('<path d="M20 34s-14-8.5-14-18a7.5 7.5 0 0 1 14-4.2A7.5 7.5 0 0 1 34 16c0 9.5-14 18-14 18z" fill="#FF4D8D" stroke="#231F20" stroke-width="2"/>', 34);
   var decos = [
-    ['#nosotros', [[pad,'6%','16%',.35,''],[cursor,'90%','14%',-.25,''],[spark,'86%','72%',.5,'hide-m'],[heart,'10%','76%',-.4,'hide-m']]],
+    ['#nosotros', [[gpad,'6%','16%',.35,''],[cursor,'90%','14%',-.25,''],[spark,'86%','72%',.5,'hide-m'],[heart,'10%','76%',-.4,'hide-m']]],
     ['#juegos', [[trophy,'3%','6%',.45,'hide-m'],[spark,'94%','4%',-.3,''],[play,'96%','92%',.3,'hide-m']]],
     ['#servicios', [[code,'97%','2%',.35,'hide-m'],[chat,'1%','60%',-.35,'hide-m']]],
     ['#trabajo', [[play,'92%','8%',.4,'hide-m'],[cursor,'2%','80%',-.3,'hide-m']]],
-    ['#contacto', [[chat,'4%','-6%',.3,''],[pad,'90%','-10%',-.35,'hide-m']]]
+    ['#contacto', [[chat,'4%','-6%',.3,''],[gpad,'90%','-10%',-.35,'hide-m']]]
   ], parts = [];
   if (!reduce) decos.forEach(function(d){
     var host = document.querySelector(d[0]); if (!host) return; host.classList.add('deco-host');
