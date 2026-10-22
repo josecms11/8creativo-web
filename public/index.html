@@ -652,6 +652,58 @@ section[id]{scroll-margin-top:96px}
 @keyframes xpflow{from{background-position:0 0}to{background-position:200% 0}}
 .xp-toast{color:#5FE0AE}
 
+
+/* ===== Burger Stack: tienda y cocina ===== */
+.screen{background:#F4FBF8}
+.field{background:
+  linear-gradient(rgba(255,255,255,.0),rgba(255,255,255,0)),
+  repeating-linear-gradient(0deg,transparent 0 27px,rgba(0,175,114,.10) 27px 28px),
+  repeating-linear-gradient(90deg,transparent 0 27px,rgba(0,175,114,.10) 27px 28px),#F4FBF8}
+.awning{position:absolute;left:0;right:0;top:0;height:44px;z-index:1;
+  background:repeating-linear-gradient(90deg,rgba(0,175,114,.55) 0 24px,rgba(255,255,255,.9) 24px 48px);
+  -webkit-mask:radial-gradient(12px at 12px 100%,transparent 98%,#000) 0 0/24px 100% ,linear-gradient(#000,#000) 0 0/100% calc(100% - 10px) no-repeat;
+  mask:radial-gradient(12px at 12px 100%,transparent 98%,#000) 0 0/24px 100%,linear-gradient(#000,#000) 0 0/100% calc(100% - 10px) no-repeat;
+  box-shadow:0 4px 0 rgba(0,0,0,.04)}
+.rail{top:52px;z-index:2}
+.crane{top:44px;z-index:3}
+.rope{height:26px}
+.combo,.msg{z-index:4}
+.miss{top:96px;z-index:3}
+.kitchen{position:absolute;inset:0;z-index:0;pointer-events:none}
+.shelf{position:absolute;left:12px;top:92px;width:70px;height:4px;background:rgba(39,48,107,.25);border-radius:2px;display:flex;gap:4px;align-items:flex-end;padding:0 4px}
+.shelf i{display:block;width:13px;height:20px;margin-top:-20px;border-radius:4px 4px 2px 2px;background:rgba(0,175,114,.35)}
+.shelf i:nth-child(2){height:14px;margin-top:-14px;background:rgba(255,201,60,.55)}
+.shelf i:nth-child(3){height:24px;margin-top:-24px;background:rgba(108,76,245,.30)}
+.shelf i:nth-child(4){height:16px;margin-top:-16px;background:rgba(255,77,141,.35)}
+.tickets{position:absolute;right:12px;top:72px;width:78px;border-top:3px solid rgba(39,48,107,.25);display:flex;justify-content:space-around}
+.tickets span{width:18px;height:24px;background:#fff;border:1px solid rgba(39,48,107,.18);border-radius:2px;transform-origin:top center;animation:swing 2.6s ease-in-out infinite;background-image:repeating-linear-gradient(180deg,transparent 0 4px,rgba(39,48,107,.18) 4px 5px)}
+.tickets span:nth-child(2){animation-delay:-.8s}.tickets span:nth-child(3){animation-delay:-1.6s}
+@keyframes swing{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.lamp{position:absolute;left:50%;top:44px;width:2px;height:0}
+.lamp i{position:absolute;left:-60px;top:110px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,232,150,.35),transparent 70%);animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.6}50%{opacity:1}}
+.counter{position:absolute;left:0;right:0;bottom:0;height:34px;background:var(--navy);border-top:4px solid #00AF72}
+.grill{position:absolute;right:10px;bottom:34px;width:62px;height:10px;border-radius:4px 4px 0 0;background:#3A3F5C}
+.grill .pt{position:absolute;bottom:10px;width:22px;height:7px;border-radius:4px;background:#6B3E26;animation:sizzle .6s ease-in-out infinite}
+.grill .p1{left:6px}.grill .p2{left:34px;animation-delay:.3s}
+@keyframes sizzle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+.grill .sz{position:absolute;bottom:18px;width:6px;height:16px;border-radius:6px;background:rgba(39,48,107,.18);animation:steam 1.8s ease-out infinite}
+.grill .s1{left:8px}.grill .s2{left:26px;animation-delay:.6s}.grill .s3{left:44px;animation-delay:1.2s}
+.bell{position:absolute;left:12px;bottom:34px;width:22px;height:12px;border-radius:12px 12px 2px 2px;background:#FFC93C;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.bell::after{content:"";position:absolute;left:9px;top:-4px;width:4px;height:4px;border-radius:50%;background:#FFC93C}
+.stackwrap{bottom:34px;z-index:2}
+.plate{border-color:var(--navy)}
+/* fachada (pantalla de inicio) */
+.ov-start{background:repeating-linear-gradient(180deg,#0B5E3F 0 18px,#0A5238 18px 20px);transition:transform .65s cubic-bezier(.7,0,.3,1)}
+.ov-start.opening{transform:translateY(-100%)}
+.shop-awning{position:absolute;left:0;right:0;top:0;height:52px;
+  background:repeating-linear-gradient(90deg,rgba(95,224,174,.95) 0 26px,rgba(255,255,255,.95) 26px 52px);
+  -webkit-mask:radial-gradient(13px at 13px 100%,transparent 98%,#000) 0 0/26px 100%,linear-gradient(#000,#000) 0 0/100% calc(100% - 11px) no-repeat;
+  mask:radial-gradient(13px at 13px 100%,transparent 98%,#000) 0 0/26px 100%,linear-gradient(#000,#000) 0 0/100% calc(100% - 11px) no-repeat}
+.open-sign{position:absolute;top:70px;left:50%;margin-left:-46px;width:92px;padding:6px 0;text-align:center;font-family:Nunito,sans-serif;font-weight:900;font-size:13px;letter-spacing:.1em;color:#0B3D2A;background:#5FE0AE;border:2px solid #0B3D2A;border-radius:8px;transform-origin:top center;animation:signsw 2.4s ease-in-out infinite}
+@keyframes signsw{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.ov-start>img{margin-top:40px}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -698,12 +750,19 @@ section[id]{scroll-margin-top:96px}
         <div class="score" id="score">00000</div>
       </div>
       <div class="field" id="field">
+        <div class="kitchen" aria-hidden="true">
+          <div class="shelf"><i></i><i></i><i></i><i></i></div>
+          <div class="tickets"><span></span><span></span><span></span></div>
+          <div class="lamp"><i></i></div>
+          <div class="counter"><div class="grill"><span class="sz s1"></span><span class="sz s2"></span><span class="sz s3"></span><i class="pt p1"></i><i class="pt p2"></i></div><div class="bell"></div></div>
+        </div>
+        <div class="awning" aria-hidden="true"></div>
         <div class="rail"></div>
         <div class="crane" id="crane"><div class="trolley"></div><div class="rope"></div><div class="hang"><img id="item" src="/assets/img/patty.svg" alt="Carne" width="106" height="20"></div></div>
         <div class="combo" id="combo"></div>
         <div class="msg" id="msg" role="status"></div>
         <div class="stackwrap" id="stack"><div class="plate"></div></div>
-        <div class="overlay ov-start" id="ovStart">
+        <div class="overlay ov-start" id="ovStart"><div class="shop-awning" aria-hidden="true"></div><div class="open-sign" aria-hidden="true">ABIERTO</div>
           <img src="/assets/img/top.svg" alt="" aria-hidden="true" width="110" height="46" style="animation:float 2s ease-in-out infinite">
           <span class="ov-title">Arma la burger</span>
           <span class="ov-txt">Suelta cada ingrediente justo encima. Si cae un calcetín, ¡déjalo pasar!</span>
@@ -1100,7 +1159,7 @@ section[id]{scroll-margin-top:96px}
   function pick(){ var need = ORDER[S.layers.length] || 'patty'; if (S.layers.length >= 2 && Math.random() < 0.28) return Math.random() < 0.5 ? 'sock' : 'shoe'; return need; }
   function start(){
     S.phase = 'play'; S.busy = false; S.lives = 3; S.score = 0; S.combo = 0; S.burgers = 0;
-    $('ovStart').hidden = true; $('ovOver').hidden = true; resetStack(); hud(); $('btnDrop').focus({preventScroll:true});
+    var ov = $('ovStart'); if (!ov.hidden) { ov.classList.add('opening'); setTimeout(function(){ ov.hidden = true; ov.classList.remove('opening'); }, 650); } $('ovOver').hidden = true; resetStack(); hud(); $('btnDrop').focus({preventScroll:true});
   }
   function lose(){
     S.lives--; S.combo = 0; shake(); hud();
