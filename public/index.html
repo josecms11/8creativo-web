@@ -1058,6 +1058,14 @@ h1,h2,h3{text-wrap:balance}
 @keyframes lr2{0%,45%{top:51px}60%,100%{top:78px}}
 @keyframes lr3{0%,45%{top:78px}60%,100%{top:24px}}
 
+
+/* celular: "La gente salta los anuncios" usa todo el ancho y menos alto */
+@media (max-width:720px){
+  section.statement{max-width:none;padding:56px 16px 52px}
+  section.statement h2{font-size:clamp(32px,9.2vw,40px);line-height:1.08}
+  section.statement p{font-size:18px;margin-top:18px;max-width:none}
+}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
