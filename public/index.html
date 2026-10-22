@@ -1074,6 +1074,25 @@ h1,h2,h3{text-wrap:balance}
 /* celular: aire antes de "Lo que gana tu marca" */
 @media (max-width:720px){section.wins{margin-top:56px;padding-top:0}}
 
+
+/* ===== Últimos detalles ===== */
+/* números 1-2-3: entrada sutil, una sola vez */
+.js .step.seen i{animation:stepin .7s cubic-bezier(.34,1.45,.64,1) both;animation-delay:calc(var(--i,0) * 120ms + .15s)}
+@keyframes stepin{0%{transform:scale(.6) rotate(-12deg);opacity:0}100%{transform:none;opacity:1}}
+/* pie de página: logo separado de la línea */
+footer.foot.wrap{padding-top:32px}
+@media (max-width:720px){footer.foot.wrap{padding-top:28px;padding-bottom:110px;gap:14px}}
+/* escritorio: aire parejo antes del cierre */
+section.cta{margin-top:28px}
+/* celular: separación pareja entre secciones (~72px) */
+@media (max-width:720px){
+  section.wins{margin-top:72px}
+  section.steps{margin-top:72px}
+  section.work{margin-top:72px}
+  section.faq{margin-top:72px}
+  section.cta{margin-top:80px}
+}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
