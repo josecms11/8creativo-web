@@ -325,11 +325,67 @@ a{color:var(--navy)}a:hover{color:#007A50}
 @keyframes confetti{0%{transform:translateY(-20px) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(520px) rotate(540deg);opacity:1}}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 @media (max-width:600px){.hero{padding-bottom:70px}.phone{height:640px}.statement{padding:100px 24px 90px}.games{padding:80px 0}.services{padding-top:90px}}
+
+/* hero caption */
+.phone-wrap{flex:0 0 auto;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+.phone-wrap .phone{margin:0}
+.phone-cap{margin:0;font-family:Nunito,sans-serif;font-weight:800;font-size:15px;color:var(--txt)}
+/* wins icons */
+.win .wico{display:block;width:52px;height:52px;margin-bottom:14px}
+.win .wico svg{width:100%;height:100%;overflow:visible}
+.draw{stroke-dasharray:60;stroke-dashoffset:60;animation:drawln 2.6s ease-in-out infinite}
+@keyframes drawln{0%{stroke-dashoffset:60}45%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:-60}}
+.plus{transform-origin:38px 20px;animation:popplus 2s ease-in-out infinite}
+@keyframes popplus{0%,100%{transform:scale(.6);opacity:.4}50%{transform:scale(1.15);opacity:1}}
+.pulse1,.pulse2,.pulse3{transform-box:fill-box;transform-origin:center;animation:dotp 1.8s ease-in-out infinite}
+.pulse2{animation-delay:.3s}.pulse3{animation-delay:.6s}
+@keyframes dotp{0%,100%{transform:scale(.7)}50%{transform:scale(1.2)}}
+.spin{transform-origin:24px 24px;animation:spin 3s linear infinite}
+/* además: tarjetas */
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px}
+.xcard{border-radius:32px;padding:clamp(28px,3vw,44px);background:var(--soft);display:flex;flex-direction:column;gap:14px;transition:transform .35s cubic-bezier(.16,.84,.24,1),box-shadow .35s}
+.xcard:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(39,48,107,.16)}
+.xcard h3{margin:8px 0 0;font-family:Nunito,sans-serif;font-weight:900;font-size:clamp(28px,2.2vw,40px);line-height:1.1;color:var(--navy)}
+.xcard p{margin:0;font-size:clamp(17px,1.2vw,21px);line-height:1.5;color:var(--txt)}
+.xcard.dark{background:var(--navy)}.xcard.dark h3{color:#fff}.xcard.dark p{color:#D5DAEC}
+.chips{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.chips li{background:#fff;color:var(--navy);font-weight:700;font-size:15px;padding:9px 14px;border-radius:999px}
+.xcard.dark .chips li{background:rgba(255,255,255,.1);color:#fff}
+.xmock{height:230px;border-radius:24px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px}
+.xcard.dark .xmock{background:rgba(255,255,255,.07)}
+.app{width:220px;background:#fff;border:3px solid var(--ink);border-radius:22px;padding:14px;box-shadow:0 6px 0 var(--ink)}
+.app-top{display:flex;align-items:center;gap:8px;font-family:Nunito,sans-serif;font-weight:900;font-size:14px;color:var(--navy)}
+.app-top span{width:22px;height:22px;border-radius:7px;background:var(--green)}
+.days{display:flex;justify-content:space-between;margin:12px 0 10px}
+.days i{font-style:normal;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;background:var(--soft);color:var(--navy)}
+.days i.on{background:var(--navy);color:#fff}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots span{font-size:12px;font-weight:700;text-align:center;padding:6px 0;border-radius:8px;background:var(--soft);color:var(--navy)}
+.slots .pick{animation:pick 3.2s ease-in-out infinite}
+@keyframes pick{0%,30%{background:var(--soft);color:var(--navy)}40%,90%{background:var(--green);color:#fff}100%{background:var(--soft);color:var(--navy)}}
+.app-ok{margin-top:10px;text-align:center;font-family:Nunito,sans-serif;font-weight:900;font-size:14px;color:#fff;background:var(--green-d);border-radius:10px;padding:7px;animation:okpop 3.2s ease-in-out infinite}
+@keyframes okpop{0%,45%{opacity:0;transform:translateY(8px)}55%,90%{opacity:1;transform:none}100%{opacity:0}}
+.course{width:250px;display:flex;flex-direction:column;gap:10px}
+.player{position:relative;height:110px;border-radius:16px;background:#111;display:flex;align-items:center;justify-content:center}
+.rec{position:absolute;left:12px;top:10px;display:flex;align-items:center;gap:6px;font-family:Nunito,sans-serif;font-weight:900;font-size:11px;color:#fff}
+.rec i{width:8px;height:8px;border-radius:50%;background:#FF3B30;animation:recb 1s infinite}
+@keyframes recb{0%,100%{opacity:1}50%{opacity:.2}}
+.play{width:0;height:0;border-left:22px solid var(--green);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px;animation:tap 1.4s ease-in-out infinite}
+.bar{position:absolute;left:12px;right:12px;bottom:10px;height:5px;border-radius:3px;background:rgba(255,255,255,.2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);animation:barfill 4s linear infinite}
+@keyframes barfill{from{width:0}to{width:100%}}
+.mods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mods li{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border-radius:8px;padding:6px 8px}
+.mods i{width:14px;height:14px;border-radius:50%;border:2px solid #5FE0AE;flex:0 0 auto;animation:modck 4s steps(1) infinite}
+.mods li:nth-child(2) i{animation-delay:1s}.mods li:nth-child(3) i{animation-delay:2s}.mods li:nth-child(4) i{animation-delay:3s}
+@keyframes modck{0%{background:transparent}25%,100%{background:#5FE0AE}}
+.cta-note{position:relative;color:rgba(255,255,255,.75);font-size:15px;margin-top:4px}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
 /* Celular */
-@media (max-width:420px){.wrap{padding:0 16px}.phone{width:100%;height:620px;border-radius:44px}.screen{border-radius:34px}.mini{zoom:.92}.hero-bg{right:-40%;height:80%}}
+@media (max-width:420px){.phone-wrap{width:100%}.wrap{padding:0 16px}.phone{width:100%;height:620px;border-radius:44px}.screen{border-radius:34px}.mini{zoom:.92}.hero-bg{right:-40%;height:80%}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rot span{opacity:0}.rot span.on{opacity:1}}
 </style>
 </head>
@@ -360,7 +416,8 @@ a{color:var(--navy)}a:hover{color:#007A50}
     </div>
   </div>
 
-  <div class="phone in d2" role="region" aria-label="Demo jugable: Burger Stack">
+  <div class="phone-wrap in d2">
+  <div class="phone" role="region" aria-label="Demo jugable: Burger Stack">
     <div class="screen" id="screen">
       <div class="hud">
         <div><span class="hud-t">BURGER STACK</span><small>Burgers: <span id="burgers">0</span></small></div>
@@ -390,6 +447,9 @@ a{color:var(--navy)}a:hover{color:#007A50}
       <div class="controls"><button type="button" class="press" id="btnDrop">SOLTAR</button></div>
     </div>
   </div>
+  <p class="phone-cap">Así se vería con tu marca ↑</p>
+  </div>
+
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
@@ -403,7 +463,7 @@ a{color:var(--navy)}a:hover{color:#007A50}
   <div class="wrap">
     <div class="sec-head">
       <h2 class="display h2 rv">Un juego para<br>cada negocio.</h2>
-      <p class="lead rv">Cada giro tiene su reto. Diseñamos el juego para resolverlo.</p>
+      <p class="lead rv">Algunos ejemplos. Cada giro tiene su reto y diseñamos el juego para resolverlo.</p>
     </div>
     <div class="ggrid">
       <figure class="gcard rv">
@@ -455,35 +515,14 @@ a{color:var(--navy)}a:hover{color:#007A50}
   </div>
 </section>
 
-<section class="wrap services" id="servicios">
-  <h2 class="display h2 rv">Lo que creamos.</h2>
-  <div class="sgrid">
-    <article class="scard dark rv">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5FE0AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01M7 6h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 6z"/></svg></span>
-      <h3>Juegos de marca</h3>
-      <p>Campañas de marketing que tus clientes juegan, comparten y te dejan sus datos.</p>
-    </article>
-    <article class="scard rv">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27306B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></span>
-      <h3>Apps y plataformas</h3>
-      <p>Desde una página web que vende hasta una app completa para tu negocio.</p>
-    </article>
-    <article class="scard rv">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27306B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 11l5-3v8l-5-3"/></svg></span>
-      <h3>Contenido e IA</h3>
-      <p>Foto, video, cursos y portales creados con inteligencia artificial.</p>
-    </article>
-  </div>
-</section>
-
 <section class="wrap wins">
   <div class="wins-box">
-    <h2 class="display rv">Lo que gana tu marca.</h2>
+    <h2 class="display rv">Lo que gana tu marca con un juego.</h2>
     <div class="wgrid">
-      <div class="rv"><b>Más ventas</b><span>Premios y cupones que se canjean en tu negocio.</span></div>
-      <div class="rv"><b>Clientes propios</b><span>Cada jugador te deja su contacto.</span></div>
-      <div class="rv"><b>Más alcance</b><span>La gente comparte y reta a sus amigos.</span></div>
-      <div class="rv"><b>Menos trabajo</b><span>Apps que automatizan lo repetitivo.</span></div>
+      <div class="rv win"><span class="wico"><svg viewBox="0 0 48 48" aria-hidden="true"><path class="draw" d="M6 36l10-10 8 6 16-18" fill="none" stroke="#5FE0AE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path class="draw" d="M32 14h8v8" fill="none" stroke="#5FE0AE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Más ventas</b><span>Premios y cupones que se canjean en tu negocio.</span></div>
+      <div class="rv win"><span class="wico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="18" r="7" fill="none" stroke="#5FE0AE" stroke-width="4"/><path d="M7 40c0-7 6-11 13-11s13 4 13 11" fill="none" stroke="#5FE0AE" stroke-width="4" stroke-linecap="round"/><g class="plus"><path d="M38 14v12M32 20h12" stroke="#FFC93C" stroke-width="4" stroke-linecap="round"/></g></svg></span><b>Clientes propios</b><span>Cada jugador te deja su contacto.</span></div>
+      <div class="rv win"><span class="wico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="pulse1" cx="36" cy="10" r="6" fill="#5FE0AE"/><circle class="pulse2" cx="12" cy="24" r="6" fill="#5FE0AE"/><circle class="pulse3" cx="36" cy="38" r="6" fill="#5FE0AE"/><path d="M17 21l14-8M17 27l14 8" stroke="#5FE0AE" stroke-width="3.5"/></svg></span><b>Más alcance</b><span>La gente comparte y reta a sus amigos.</span></div>
+      <div class="rv win"><span class="wico"><svg viewBox="0 0 48 48" aria-hidden="true"><g class="spin"><path d="M40 24a16 16 0 1 1-5-11.6" fill="none" stroke="#5FE0AE" stroke-width="4" stroke-linecap="round"/><path d="M36 6v8h-8" fill="none" stroke="#5FE0AE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g></svg></span><b>Clientes que regresan</b><span>El ranking los hace volver a jugar y a comprar.</span></div>
     </div>
   </div>
 </section>
@@ -497,11 +536,47 @@ a{color:var(--navy)}a:hover{color:#007A50}
   </div>
 </section>
 
+<section class="wrap services" id="servicios">
+  <div class="sec-head">
+    <h2 class="display h2 rv">Además de juegos,<br>creamos.</h2>
+    <p class="lead rv">Si tu negocio lo necesita, lo diseñamos y lo programamos.</p>
+  </div>
+  <div class="xgrid">
+    <article class="xcard rv">
+      <div class="xmock" aria-hidden="true">
+        <div class="app">
+          <div class="app-top"><span></span><b>Reserva tu mesa</b></div>
+          <div class="days"><i>L</i><i>M</i><i class="on">M</i><i>J</i><i>V</i></div>
+          <div class="slots"><span>1:00</span><span>2:00</span><span class="pick">3:00</span><span>4:00</span><span>5:00</span><span>6:00</span></div>
+          <div class="app-ok">✓ Reservado</div>
+        </div>
+      </div>
+      <h3>Apps, plataformas y sitios</h3>
+      <p>Desde una página que vende hasta una app completa para tu negocio.</p>
+      <ul class="chips"><li>Reservaciones y citas</li><li>Membresías y lealtad</li><li>Pagos y suscripciones</li><li>Tiendas en línea</li><li>Paneles de control</li></ul>
+    </article>
+    <article class="xcard dark rv">
+      <div class="xmock" aria-hidden="true">
+        <div class="course">
+          <div class="player"><span class="rec"><i></i>REC</span><span class="play"></span><span class="bar"><i></i></span></div>
+          <ul class="mods"><li><i></i>Bienvenida</li><li><i></i>Módulo 1</li><li><i></i>Módulo 2</li><li><i></i>Certificado</li></ul>
+        </div>
+      </div>
+      <h3>Contenido, cursos e IA</h3>
+      <p>Foto y video para tu marca, y con inteligencia artificial creamos cursos y portales.</p>
+      <ul class="chips"><li>Reels y fotografía</li><li>Videos institucionales</li><li>Cursos con IA</li><li>Capacitación para tu equipo</li><li>Portales para clientes</li></ul>
+    </article>
+  </div>
+</section>
+
 <section class="wrap work" id="trabajo">
-  <h2 class="display h2 rv">Ya está en vivo.</h2>
+  <div class="sec-head">
+    <h2 class="display h2 rv">Hecho por nosotros.</h2>
+    <p class="lead rv">Proyectos propios en vivo. La misma tecnología, con tu marca.</p>
+  </div>
   <div class="wkgrid">
-    <a class="wk" href="https://fantasyexpertos.app" target="_blank" rel="noopener" style="background:#0F2A1B"><small style="color:#7EE3B5">Plataforma</small><b>Fantasy Expertos</b><span style="color:#CFE7DA">Fantasy football en español que se actualiza solo.</span><em style="color:#7EE3B5">Visitar →</em></a>
-    <a class="wk" href="https://blitz-games.8creativo-agencia.workers.dev" target="_blank" rel="noopener" style="background:#0B0F1F"><small style="color:#FFC93C">Juegos</small><b>BLITZ-GAMES</b><span style="color:#D0D4E4">Arcade de fútbol americano para el celular.</span><em style="color:#FFC93C">Jugar →</em></a>
+    <a class="wk" href="https://fantasyexpertos.app" target="_blank" rel="noopener" style="background:#0F2A1B"><small style="color:#7EE3B5">Plataforma con suscripciones</small><b>Fantasy Expertos</b><span style="color:#CFE7DA">Datos que se actualizan solos, cuentas de usuario y pagos.</span><em style="color:#7EE3B5">Visitar →</em></a>
+    <a class="wk" href="https://blitz-games.8creativo-agencia.workers.dev" target="_blank" rel="noopener" style="background:#0B0F1F"><small style="color:#FFC93C">Juegos para celular</small><b>BLITZ-GAMES</b><span style="color:#D0D4E4">Cuatro juegos arcade que se juegan sin descargar nada.</span><em style="color:#FFC93C">Jugar →</em></a>
   </div>
 </section>
 
@@ -524,6 +599,7 @@ a{color:var(--navy)}a:hover{color:#007A50}
       <a class="btn btn-white js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>Chatea por WhatsApp</a>
       <a class="btn btn-navy" href="https://www.instagram.com/8creativo.agencia/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a>
     </div>
+    <small class="cta-note">En una llamada de 15 minutos te mostramos una idea para tu marca. Sin compromiso.</small>
   </div>
 </section>
 </main>
