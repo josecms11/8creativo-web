@@ -757,6 +757,35 @@ section[id]{scroll-margin-top:96px}
 .services .scard[aria-selected="true"]::after{opacity:1;animation-play-state:running;background:conic-gradient(from var(--ang),transparent 0 62%,#fff 78%,var(--cin) 84%,#fff 90%,transparent 100%);filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px var(--c))}
 @keyframes snake{to{--ang:360deg}}
 
+
+/* ===== Burger Stack: toldo de food truck y menos verde ===== */
+.awning,.shop-awning{-webkit-mask:none;mask:none;background:none;box-shadow:none;display:flex;height:auto;align-items:flex-start;filter:drop-shadow(0 3px 2px rgba(35,31,32,.12))}
+.awning i,.shop-awning i{flex:1;display:block;height:30px;background:#00AF72;border-radius:0 0 999px 999px;position:relative}
+.awning i:nth-child(even),.shop-awning i:nth-child(even){background:#fff}
+.awning i::before,.shop-awning i::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:rgba(0,0,0,.06)}
+.awning{top:0;z-index:2}
+.awning::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--navy);z-index:1}
+.shop-awning i{height:36px}
+/* HUD y controles en gris claro con texto azul */
+.hud{background:#F3F5F6;border-bottom:3px solid #E4E8EA}
+.hud-t{color:var(--navy)}
+.hud small{color:var(--txt)}
+.score{background:var(--navy);color:#fff}
+.controls{background:#F3F5F6;border-top:3px solid #E4E8EA}
+.controls .press{background:#00AF72;color:#fff;border-color:#0B5E3F;box-shadow:0 6px 0 #0B5E3F}
+.controls .press:active{box-shadow:0 1px 0 #0B5E3F}
+/* cocina: pared blanca suave, sin cuadrícula verde */
+.field{background:linear-gradient(180deg,#FFFFFF 0%,#F3F5F6 100%)}
+.rail{top:46px}
+.crane{top:38px}
+/* pantalla de inicio en gris-blanco */
+.ov-start{background:linear-gradient(180deg,#FFFFFF 0%,#F3F5F6 100%)}
+.ov-start .ov-title{color:var(--navy)}
+.ov-start .ov-txt{color:var(--txt)}
+.ov-start .press{background:#00AF72;color:#fff;border-color:#0B5E3F;box-shadow:0 6px 0 #0B5E3F}
+.ov-start .press:active{box-shadow:0 1px 0 #0B5E3F}
+.open-sign{top:62px;background:var(--navy);color:#fff;border-color:var(--navy)}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -809,13 +838,13 @@ section[id]{scroll-margin-top:96px}
           <div class="lamp"><i></i></div>
           <div class="counter"><div class="grill"><span class="sz s1"></span><span class="sz s2"></span><span class="sz s3"></span><i class="pt p1"></i><i class="pt p2"></i></div><div class="bell"></div></div>
         </div>
-        <div class="awning" aria-hidden="true"></div>
+        <div class="awning" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="rail"></div>
         <div class="crane" id="crane"><div class="trolley"></div><div class="rope"></div><div class="hang"><img id="item" src="/assets/img/patty.svg" alt="Carne" width="106" height="20"></div></div>
         <div class="combo" id="combo"></div>
         <div class="msg" id="msg" role="status"></div>
         <div class="stackwrap" id="stack"><div class="plate"></div></div>
-        <div class="overlay ov-start" id="ovStart"><div class="shop-awning" aria-hidden="true"></div><div class="open-sign" aria-hidden="true">ABIERTO</div>
+        <div class="overlay ov-start" id="ovStart"><div class="shop-awning" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="open-sign" aria-hidden="true">ABIERTO</div>
           <img src="/assets/img/top.svg" alt="" aria-hidden="true" width="110" height="46" style="animation:float 2s ease-in-out infinite">
           <span class="ov-title">Arma la burger</span>
           <span class="ov-txt">Suelta cada ingrediente justo encima. Si cae un calcetín, ¡déjalo pasar!</span>
