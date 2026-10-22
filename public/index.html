@@ -1021,6 +1021,35 @@ h1,h2,h3{text-wrap:balance}
 .btn-ig:hover,.nav-ig:hover{background:#65326F}
 .nav-ig:hover{box-shadow:0 10px 24px rgba(122,62,142,.3)}
 
+
+/* Instagram en rosa */
+.btn-ig,.nav-ig{background:#D6417F}
+.btn-ig:hover,.nav-ig:hover{background:#BE356D}
+.nav-ig:hover{box-shadow:0 10px 24px rgba(214,65,127,.3)}
+/* celular: separación entre menú y portada */
+@media (max-width:720px){section.hero{padding-top:40px}section.hero .pill{margin-top:0}}
+
+
+/* celular: menú en una sola línea, más compacto */
+@media (max-width:720px){
+  .nav{flex-wrap:nowrap;padding-top:12px;padding-bottom:12px;gap:10px}
+  .nav-links{flex-wrap:nowrap;gap:10px}
+  .logo{height:36px}
+  .nav-ig{width:42px;height:42px}
+  .nav .nav-wa{padding:10px 16px;min-height:42px;font-size:15px}
+  .pill{font-size:12.5px}
+  /* "La gente salta los anuncios" más grande */
+  .statement h2{font-size:44px;line-height:1.08}
+  .statement p{font-size:19px}
+}
+@media (max-width:720px){header.nav.wrap{padding:12px 16px}}
+@media (max-width:380px){
+  .nav .nav-wa span{display:none}
+  .nav .nav-wa{padding:0;width:42px;justify-content:center}
+  .logo{height:32px}
+  .statement h2{font-size:38px}
+}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -1040,7 +1069,7 @@ h1,h2,h3{text-wrap:balance}
     <a class="txt" href="#servicios">Servicios</a>
     <a class="txt" href="#trabajo">Trabajo</a>
     <a class="nav-ig" href="https://www.instagram.com/8creativo.agencia/" target="_blank" rel="noopener" aria-label="Instagram de 8 Creativo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#FFFFFF"/></svg></a>
-    <a class="btn btn-green js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>WhatsApp</a>
+    <a class="btn btn-green js-wa nav-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener" aria-label="Chatea por WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg><span>WhatsApp</span></a>
   </nav>
 </header>
 </div>
