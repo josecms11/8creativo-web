@@ -875,8 +875,8 @@ section[id]{scroll-margin-top:96px}
 /* --- neón SVG en tarjetas (reemplaza el anterior) --- */
 .services .scard::after{display:none!important}
 [data-pn="juegos"]{--glow:#FFE08A}[data-pn="apps"]{--glow:#B9A8FF}[data-pn="contenido"]{--glow:#FFA3C4}
-.snake{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;opacity:0;transition:opacity .35s}
-.snake rect{width:calc(100% - 4px);height:calc(100% - 4px);fill:none;stroke:var(--glow);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:16 84;filter:drop-shadow(0 0 4px var(--glow)) drop-shadow(0 0 10px var(--glow));animation:snk 4.5s linear infinite;animation-play-state:paused}
+.snake{position:absolute;top:3px;left:3px;width:calc(100% - 6px);height:calc(100% - 6px);pointer-events:none;overflow:visible;opacity:0;transition:opacity .35s}
+.snake rect{fill:none;stroke:var(--glow);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:16 84;filter:drop-shadow(0 0 4px var(--glow)) drop-shadow(0 0 10px var(--glow));animation:snk 4.5s linear infinite;animation-play-state:paused}
 @keyframes snk{to{stroke-dashoffset:-100}}
 .services .scard:hover .snake,.services .scard:focus-visible .snake,.services .scard[aria-selected="true"] .snake{opacity:1}
 .services .scard:hover .snake rect,.services .scard:focus-visible .snake rect,.services .scard[aria-selected="true"] .snake rect{animation-play-state:running}
@@ -1081,21 +1081,21 @@ section[id]{scroll-margin-top:96px}
       <h3>Juegos de marca</h3>
       <p>Campañas de marketing que tus clientes juegan, comparten y te dejan sus datos.</p>
       <span class="more">Ver más <i>+</i></span>
-      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
+      <svg class="snake" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="25" ry="25" pathLength="100"></rect></svg>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-apps" aria-controls="pn-apps" aria-selected="false" data-pn="apps">
       <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></span>
       <h3>Apps y plataformas</h3>
       <p>Desde una página web que vende hasta una app completa para tu negocio.</p>
       <span class="more">Ver más <i>+</i></span>
-      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
+      <svg class="snake" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="25" ry="25" pathLength="100"></rect></svg>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-contenido" aria-controls="pn-contenido" aria-selected="false" data-pn="contenido">
       <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 11l5-3v8l-5-3"/></svg></span>
       <h3>Contenido e IA</h3>
       <p>Foto, video, cursos y portales creados con inteligencia artificial.</p>
       <span class="more">Ver más <i>+</i></span>
-      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
+      <svg class="snake" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="25" ry="25" pathLength="100"></rect></svg>
     </button>
   </div>
 
