@@ -435,6 +435,26 @@ button.scard:focus-visible{outline:3px solid var(--green)}
 .nav-links a.txt.active::after,.nav-links a.txt:hover::after{transform:scaleX(1)}
 section[id]{scroll-margin-top:96px}
 
+
+/* Menos azul: despliegues y tarjeta de juegos en verde */
+.pmock.dark{background:var(--green-d)}
+.pmock.dark .mods li{background:rgba(255,255,255,.16)}
+.pmock.dark .mods i{border-color:#fff;animation-name:modck2}
+@keyframes modck2{0%{background:transparent}25%,100%{background:var(--navy);border-color:var(--navy)}}
+.pmock.dark .bar i{background:var(--navy)}
+.pmock.dark .play{border-left-color:#fff}
+.combo3 i{color:#fff}
+@keyframes lit{0%,100%{background:#fff;color:var(--navy);transform:none}25%{background:var(--navy);color:#fff;transform:translateY(-4px)}}
+.rank div{background:rgba(255,255,255,.16)}
+.rank .me{background:var(--navy)}
+.scard.dark{background:var(--green-d)}
+.scard.dark p{color:#E6FFF4}
+.scard.dark .sico{background:rgba(255,255,255,.18)}
+.scard.dark .more{color:#fff}
+.scard.dark .sico svg{stroke:#fff}
+.scard[aria-selected="true"]{box-shadow:0 0 0 3px var(--navy),0 30px 60px rgba(39,48,107,.16)}
+.mix-t{background:var(--navy)}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -578,7 +598,7 @@ section[id]{scroll-margin-top:96px}
   </div>
   <div class="sgrid" role="tablist" aria-label="Servicios">
     <button type="button" class="scard dark rv" role="tab" id="tab-juegos" aria-controls="pn-juegos" aria-selected="false" data-pn="juegos">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5FE0AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01M7 6h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 6z"/></svg></span>
+      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01M7 6h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 6z"/></svg></span>
       <h3>Juegos de marca</h3>
       <p>Campañas de marketing que tus clientes juegan, comparten y te dejan sus datos.</p>
       <span class="more">Ver más <i>+</i></span>
