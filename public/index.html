@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-MX">
+<html lang="es-MX" class="js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -282,13 +282,13 @@ a{color:var(--navy)}a:hover{color:#007A50}
 
 /* CTA */
 .cta{padding:0 24px 70px;max-width:max(1240px,min(88vw,1640px));margin:0 auto}
-.cta-box{background:var(--ink);border-radius:36px;padding:clamp(56px,8vw,84px) 32px;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
-.cta-box .o1,.cta-box .o2{position:absolute;opacity:.16;pointer-events:none;width:auto;max-width:none}
+.cta-box{background:var(--green-d);border-radius:36px;padding:clamp(56px,8vw,84px) 32px;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.cta-box .o1,.cta-box .o2{position:absolute;opacity:.12;pointer-events:none;width:auto;max-width:none}
 .cta-box .o1{right:-4%;top:-22%;height:115%;animation:spin 40s linear infinite}
 .cta-box .o2{left:-5%;bottom:-40%;height:95%;animation:spin 50s linear infinite reverse}
 @media (max-width:820px){.cta-box .o1{right:-30%;top:-10%;height:90%}.cta-box .o2{display:none}}
 .cta-box h2{color:#fff;font-size:clamp(52px,5.5vw,110px);line-height:1;position:relative}
-.cta-box p{position:relative;color:#D9DADF;font-size:20px;line-height:1.5;margin:0;max-width:480px}
+.cta-box p{position:relative;color:#E6FFF4;font-size:20px;line-height:1.5;margin:0;max-width:480px}
 .cta-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;position:relative;margin-top:6px}
 
 /* FOOTER */
@@ -300,7 +300,7 @@ a{color:var(--navy)}a:hover{color:#007A50}
 .fab:hover{color:#fff}
 
 /* REVEAL */
-@supports (animation-timeline: view()){.rv{animation:up linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
+
 
 @keyframes up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -455,6 +455,77 @@ section[id]{scroll-margin-top:96px}
 .scard[aria-selected="true"]{box-shadow:0 0 0 3px var(--navy),0 30px 60px rgba(39,48,107,.16)}
 .mix-t{background:var(--navy)}
 
+
+.btn-mint{background:#5FE0AE;color:#0B3D2A}.btn-mint:hover{color:#0B3D2A}
+/* ===== Animaciones al hacer scroll ===== */
+.js .rv{opacity:0}
+.js .rv.seen{animation:popin2 .8s cubic-bezier(.34,1.45,.64,1) both;animation-delay:calc(var(--i,0) * 90ms)}
+@keyframes popin2{0%{opacity:0;transform:translateY(46px) scale(.94)}100%{opacity:1;transform:none}}
+.js .ggrid .rv.seen{animation-name:blockdrop;animation-duration:.9s}
+@keyframes blockdrop{0%{opacity:0;transform:translateY(-90px) rotate(-6deg)}60%{opacity:1;transform:translateY(10px) rotate(1.5deg)}80%{transform:translateY(-4px) rotate(-.5deg)}100%{opacity:1;transform:none}}
+.js .sgrid .rv.seen{animation-name:flipup}
+@keyframes flipup{0%{opacity:0;transform:perspective(900px) rotateX(-55deg) translateY(30px)}100%{opacity:1;transform:none}}
+.js .step.seen i{animation:coinspin .9s ease-out both;animation-delay:calc(var(--i,0) * 90ms + .2s)}
+@keyframes coinspin{0%{transform:rotateY(0) scale(.4)}60%{transform:rotateY(540deg) scale(1.15)}100%{transform:rotateY(720deg) scale(1)}}
+.js h2.rv.seen{animation-name:titlepop}
+@keyframes titlepop{0%{opacity:0;transform:translateY(40px) scale(.9);letter-spacing:.04em}70%{transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:none;letter-spacing:-.025em}}
+/* barra de progreso tipo videojuego */
+.xp{position:absolute;left:0;bottom:-3px;height:4px;width:100%;background:rgba(39,48,107,.08)}
+.xp i{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--green),#5FE0AE);border-radius:0 3px 3px 0}
+.xp b{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#FFC93C;border:2px solid var(--ink);left:0;transition:transform .2s}
+.xp b.bump{animation:bump .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bump{50%{transform:scale(1.8)}}
+.xp-toast{position:absolute;right:24px;top:100%;margin-top:10px;background:var(--ink);color:#FFC93C;font-family:Nunito,sans-serif;font-weight:900;font-size:13px;padding:6px 10px;border-radius:10px;opacity:0;transform:translateY(-6px);pointer-events:none}
+.xp-toast.show{animation:toast 1.4s ease both}
+@keyframes toast{15%,75%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
+/* piezas flotantes con parallax */
+.deco-host{position:relative}
+.deco{position:absolute;pointer-events:none;z-index:0;will-change:transform}
+.deco img,.deco svg{display:block}
+.deco .bob{animation:float 5s ease-in-out infinite}
+.deco-host>*:not(.deco){position:relative;z-index:1}
+@media (max-width:720px){.deco.hide-m{display:none}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1}.deco{display:none}}
+
+
+/* ===== Servicios con identidad de color propia ===== */
+[data-pn="juegos"],#pn-juegos{--c:#FFC93C;--cin:#231F20;--tint:#FFF6DA;--deep:#8A6100}
+[data-pn="apps"],#pn-apps{--c:#6C4CF5;--cin:#FFFFFF;--tint:#EFEBFF;--deep:#4B2FD1}
+[data-pn="contenido"],#pn-contenido{--c:#FF4D8D;--cin:#231F20;--tint:#FFE8F0;--deep:#B3125A}
+.services .scard{background:var(--tint);position:relative;overflow:hidden}
+.services .scard::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:var(--c);opacity:.18;transition:transform .5s cubic-bezier(.34,1.45,.64,1),opacity .4s}
+.services .scard:hover::before{transform:scale(1.35);opacity:.28}
+.services .scard .sico{background:var(--c);color:var(--cin)}
+.services .scard:hover .sico{animation:wig .5s ease}
+@keyframes wig{25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+.services .scard h3{color:var(--navy)}
+.services .scard p{color:var(--txt)}
+.services .scard .more{color:var(--deep)}
+.services .scard[aria-selected="true"]{background:var(--c);box-shadow:0 24px 50px rgba(35,31,32,.18);transform:translateY(-6px)}
+.services .scard[aria-selected="true"]::before{background:#fff;opacity:.2;transform:scale(1.6)}
+.services .scard[aria-selected="true"] h3,.services .scard[aria-selected="true"] p,.services .scard[aria-selected="true"] .more{color:var(--cin)}
+.services .scard[aria-selected="true"] .sico{background:var(--cin);color:var(--c)}
+.services .panel{background:var(--tint)}
+.services .pmock{background:var(--c);background-image:radial-gradient(rgba(255,255,255,.28) 2px,transparent 2.5px);background-size:22px 22px}
+.services .mix{border:2px solid var(--c)}
+.services .mix-t{background:var(--c);color:var(--cin)}
+.services .chips li{border:2px solid transparent;transition:border-color .2s,transform .2s}
+.services .chips li:hover{border-color:var(--c);transform:translateY(-2px)}
+/* contenidos de cada animación sobre su color */
+#pn-juegos .combo3 span{background:#fff;color:var(--ink)}
+#pn-juegos .combo3 i{color:var(--ink)}
+@keyframes lit{0%,100%{background:#fff;color:#231F20;transform:none}25%{background:#231F20;color:#FFC93C;transform:translateY(-4px)}}
+#pn-juegos .rank div{background:rgba(255,255,255,.55);color:var(--ink)}
+#pn-juegos .rank em{color:var(--ink)}
+#pn-juegos .rank b{background:var(--ink);color:#FFC93C}
+#pn-juegos .rank .me{background:var(--ink);color:#fff}#pn-juegos .rank .me em{color:#FFC93C}
+#pn-apps .app{box-shadow:0 8px 0 #2E1C8A}
+#pn-contenido .mods li{background:rgba(255,255,255,.6);color:var(--ink)}
+#pn-contenido .mods i{border-color:var(--ink);animation-name:modck3}
+@keyframes modck3{0%{background:transparent}25%,100%{background:#231F20}}
+#pn-contenido .bar i{background:#FF4D8D}
+#pn-contenido .play{border-left-color:#FF4D8D}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -466,7 +537,7 @@ section[id]{scroll-margin-top:96px}
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<div class="topbar" id="topbar">
+<div class="topbar" id="topbar"><div class="xp" aria-hidden="true"><i id="xpFill"></i><b id="xpDot"></b></div><div class="xp-toast" id="xpToast" aria-hidden="true">+100 XP</div>
 <header class="wrap nav">
   <a href="/" aria-label="8 Creativo, inicio"><img class="logo" src="/assets/img/logo-ocho-creativo.png" alt="Ocho Creativo" width="800" height="257"></a>
   <nav class="nav-links" aria-label="Principal">
@@ -597,20 +668,20 @@ section[id]{scroll-margin-top:96px}
     <p class="lead rv">Tres servicios que funcionan solos y se potencian juntos. Toca uno para ver más.</p>
   </div>
   <div class="sgrid" role="tablist" aria-label="Servicios">
-    <button type="button" class="scard dark rv" role="tab" id="tab-juegos" aria-controls="pn-juegos" aria-selected="false" data-pn="juegos">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01M7 6h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 6z"/></svg></span>
+    <button type="button" class="scard rv" role="tab" id="tab-juegos" aria-controls="pn-juegos" aria-selected="false" data-pn="juegos">
+      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01M7 6h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 6z"/></svg></span>
       <h3>Juegos de marca</h3>
       <p>Campañas de marketing que tus clientes juegan, comparten y te dejan sus datos.</p>
       <span class="more">Ver más <i>+</i></span>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-apps" aria-controls="pn-apps" aria-selected="false" data-pn="apps">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27306B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></span>
+      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></span>
       <h3>Apps y plataformas</h3>
       <p>Desde una página web que vende hasta una app completa para tu negocio.</p>
       <span class="more">Ver más <i>+</i></span>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-contenido" aria-controls="pn-contenido" aria-selected="false" data-pn="contenido">
-      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#27306B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 11l5-3v8l-5-3"/></svg></span>
+      <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 11l5-3v8l-5-3"/></svg></span>
       <h3>Contenido e IA</h3>
       <p>Foto, video, cursos y portales creados con inteligencia artificial.</p>
       <span class="more">Ver más <i>+</i></span>
@@ -620,7 +691,7 @@ section[id]{scroll-margin-top:96px}
   <div class="drawer" id="drawer">
     <div class="drawer-in">
       <div class="panel" id="pn-juegos" role="tabpanel" aria-labelledby="tab-juegos" hidden>
-        <div class="pmock dark" aria-hidden="true">
+        <div class="pmock" aria-hidden="true">
           <div class="combo3"><span class="c1">Juego</span><i>+</i><span class="c2">Landing</span><i>+</i><span class="c3">Reels</span></div>
           <div class="rank"><div><b>1</b>Ana R.<em>18,920</em></div><div><b>2</b>Luis M.<em>16,400</em></div><div class="me"><b>3</b>Tú<em>12,480</em></div></div>
         </div>
@@ -650,7 +721,7 @@ section[id]{scroll-margin-top:96px}
       </div>
 
       <div class="panel" id="pn-contenido" role="tabpanel" aria-labelledby="tab-contenido" hidden>
-        <div class="pmock dark" aria-hidden="true">
+        <div class="pmock" aria-hidden="true">
           <div class="course">
             <div class="player"><span class="rec"><i></i>REC</span><span class="play"></span><span class="bar"><i></i></span></div>
             <ul class="mods"><li><i></i>Bienvenida</li><li><i></i>Módulo 1</li><li><i></i>Módulo 2</li><li><i></i>Certificado</li></ul>
@@ -715,8 +786,8 @@ section[id]{scroll-margin-top:96px}
     <h2 class="display">¿Jugamos?</h2>
     <p>Mándanos tu idea. Te respondemos con una propuesta.</p>
     <div class="cta-btns">
-      <a class="btn btn-green js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>Chatea por WhatsApp</a>
-      <a class="btn btn-white" href="https://www.instagram.com/8creativo.agencia/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a>
+      <a class="btn btn-mint js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>Chatea por WhatsApp</a>
+      <a class="btn btn-navy" href="https://www.instagram.com/8creativo.agencia/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>Instagram</a>
     </div>
     <small class="cta-note">En una llamada de 15 minutos te mostramos una idea para tu marca. Sin compromiso.</small>
   </div>
@@ -766,6 +837,48 @@ section[id]{scroll-margin-top:96px}
   document.getElementById('memo').innerHTML = mh;
 
 
+
+
+  // ===== Animaciones al hacer scroll =====
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs = document.querySelectorAll('.rv');
+  rvs.forEach(function(el){ var sib = el.parentElement ? Array.prototype.filter.call(el.parentElement.children, function(c){ return c.classList.contains('rv'); }) : []; el.style.setProperty('--i', Math.max(0, sib.indexOf(el))); });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var rio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('seen'); rio.unobserve(e.target); } }); }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el){ rio.observe(el); });
+  } else { rvs.forEach(function(el){ el.classList.add('seen'); }); document.documentElement.classList.remove('js'); }
+
+  // Piezas flotantes (ingredientes, monedas, estrellas)
+  var coin = '<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="#FFC93C" stroke="#231F20" stroke-width="3"/><circle cx="17" cy="17" r="7" fill="none" stroke="#B8860B" stroke-width="2.5"/></svg>';
+  var star = '<svg width="36" height="36" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z" fill="#00AF72" stroke="#231F20" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+  var plus = '<svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" stroke="#27306B" stroke-width="4" stroke-linecap="round"/></svg>';
+  var img = function(n, w){ return '<img src="/assets/img/' + n + '.svg" alt="" width="' + w + '">'; };
+  var decos = [
+    ['#nosotros', [[coin,'6%','18%',.35,''],[star,'90%','12%',-.25,''],[img('cheese',90),'84%','72%',.5,'hide-m'],[plus,'10%','78%',-.4,'hide-m']]],
+    ['#juegos', [[img('lettuce',100),'3%','6%',.45,'hide-m'],[coin,'94%','4%',-.3,''],[star,'96%','92%',.3,'hide-m']]],
+    ['#servicios', [[plus,'97%','2%',.35,'hide-m'],[coin,'1%','60%',-.35,'hide-m']]],
+    ['#trabajo', [[img('tomato',90),'92%','8%',.4,'hide-m'],[star,'2%','80%',-.3,'hide-m']]],
+    ['#contacto', [[coin,'4%','-6%',.3,''],[img('top',90),'90%','-10%',-.35,'hide-m']]]
+  ], parts = [];
+  if (!reduce) decos.forEach(function(d){
+    var host = document.querySelector(d[0]); if (!host) return; host.classList.add('deco-host');
+    d[1].forEach(function(x){ var el = document.createElement('div'); el.className = 'deco ' + x[4]; el.setAttribute('aria-hidden','true'); el.style.left = x[1]; el.style.top = x[2]; el.innerHTML = '<div class="bob" style="animation-delay:-' + (Math.random()*4).toFixed(1) + 's">' + x[0] + '</div>'; host.appendChild(el); parts.push({el:el, host:host, k:x[3]}); });
+  });
+
+  // Barra de progreso tipo XP + parallax
+  var xpFill = document.getElementById('xpFill'), xpDot = document.getElementById('xpDot'), xpToast = document.getElementById('xpToast'), lastLvl = 0, ticking = false;
+  function frame(){
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight, pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    xpFill.style.width = (pct * 100) + '%'; xpDot.style.left = (pct * 100) + '%';
+    var lvl = Math.floor(pct * 5 + 0.0001);
+    if (lvl > lastLvl) { xpDot.classList.remove('bump'); void xpDot.offsetWidth; xpDot.classList.add('bump'); xpToast.classList.remove('show'); void xpToast.offsetWidth; xpToast.classList.add('show'); }
+    lastLvl = Math.max(lastLvl, lvl);
+    var vh = window.innerHeight;
+    parts.forEach(function(p){ var r = p.host.getBoundingClientRect(); if (r.bottom < -200 || r.top > vh + 200) return; var c = (r.top + r.height / 2 - vh / 2); p.el.style.transform = 'translate3d(0,' + (c * p.k * -0.35).toFixed(1) + 'px,0) rotate(' + (c * p.k * 0.04).toFixed(1) + 'deg)'; });
+  }
+  window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive:true});
+  window.addEventListener('resize', frame); frame();
 
   // Menú fijo: sombra al bajar y sección activa
   var topbar = document.getElementById('topbar');
