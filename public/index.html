@@ -627,6 +627,31 @@ section[id]{scroll-margin-top:96px}
 .pbtn{margin-left:auto;background:#4B2FD1;color:#fff;font-family:Nunito,sans-serif;font-weight:900;font-size:11px;padding:6px 10px;border-radius:8px}
 @media (max-width:600px){.gstage{padding:12px 18px}.pop{width:160px;font-size:12px}}
 
+
+/* ===== Burger Stack con colores de la marca ===== */
+.screen{background:#EAFBF3}
+.hud{background:#5FE0AE;border-bottom-color:#0B3D2A}
+.hud small{color:#0B5E3F}
+.score{background:var(--navy);color:#5FE0AE}
+.field{background:repeating-linear-gradient(90deg,#F2FCF7 0 40px,#E2F7EE 40px 80px)}
+.rail{background:var(--navy)}
+.trolley{background:#00AF72;border-color:var(--navy)}
+.rope{background:var(--navy)}
+.ov-start{background:rgba(11,94,63,.95)}.ov-start .ov-txt{color:#D9F7EA}
+.ov-over{background:rgba(39,48,107,.95)}
+.overlay .press{background:#5FE0AE;color:#0B3D2A;border-color:#0B3D2A;box-shadow:0 6px 0 #0B3D2A}
+.controls{background:#5FE0AE;border-top-color:#0B3D2A}
+.controls .press{background:var(--navy);color:#fff;border-color:#141A44;box-shadow:0 6px 0 #141A44}
+.controls .press:active{box-shadow:0 1px 0 #141A44}
+.ov-score{color:#5FE0AE}
+/* punto neón de la barra XP */
+.xp b{background:#5FE0AE;border:0;width:14px;height:14px;animation:neon 2.4s ease-in-out infinite}
+@keyframes neon{0%,100%{background:#5FE0AE;box-shadow:0 0 6px #5FE0AE,0 0 14px rgba(95,224,174,.8)}50%{background:#B8FFE0;box-shadow:0 0 10px #00FFA3,0 0 22px rgba(0,255,163,.9)}}
+.xp b.bump{animation:bump .5s cubic-bezier(.34,1.56,.64,1),neon 2.4s ease-in-out infinite}
+.xp i{background:linear-gradient(90deg,#00AF72,#5FE0AE,#00FFA3);background-size:200% 100%;animation:xpflow 3s linear infinite}
+@keyframes xpflow{from{background-position:0 0}to{background-position:200% 0}}
+.xp-toast{color:#5FE0AE}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -972,16 +997,21 @@ section[id]{scroll-margin-top:96px}
   } else { rvs.forEach(function(el){ el.classList.add('seen'); }); document.documentElement.classList.remove('js'); }
 
   // Piezas flotantes (ingredientes, monedas, estrellas)
-  var coin = '<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="14" fill="#FFC93C" stroke="#231F20" stroke-width="3"/><circle cx="17" cy="17" r="7" fill="none" stroke="#B8860B" stroke-width="2.5"/></svg>';
-  var star = '<svg width="36" height="36" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z" fill="#00AF72" stroke="#231F20" stroke-width="1.6" stroke-linejoin="round"/></svg>';
-  var plus = '<svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" stroke="#27306B" stroke-width="4" stroke-linecap="round"/></svg>';
-  var img = function(n, w){ return '<img src="/assets/img/' + n + '.svg" alt="" width="' + w + '">'; };
+  var S2 = function(inner, w){ return '<svg width="' + (w||40) + '" height="' + (w||40) + '" viewBox="0 0 40 40">' + inner + '</svg>'; };
+  var pad = S2('<rect x="3" y="11" width="34" height="18" rx="9" fill="#27306B"/><path d="M11 17v6M8 20h6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="27" cy="18" r="2.2" fill="#5FE0AE"/><circle cx="31" cy="22" r="2.2" fill="#FFC93C"/>', 48);
+  var cursor = S2('<path d="M9 5l22 13-10 2.5 6 11-4 2-6-11-8 7z" fill="#fff" stroke="#27306B" stroke-width="2.4" stroke-linejoin="round"/>', 38);
+  var play = S2('<circle cx="20" cy="20" r="17" fill="#00AF72"/><path d="M16 12l12 8-12 8z" fill="#fff"/>', 40);
+  var code = S2('<rect x="2" y="6" width="36" height="28" rx="8" fill="#6C4CF5"/><path d="M15 15l-5 5 5 5M25 15l5 5-5 5M22 13l-4 14" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>', 44);
+  var trophy = S2('<path d="M12 6h16v8a8 8 0 0 1-16 0z" fill="#FFC93C" stroke="#231F20" stroke-width="2"/><path d="M12 9H6a5 5 0 0 0 6 7M28 9h6a5 5 0 0 1-6 7" fill="none" stroke="#231F20" stroke-width="2"/><path d="M17 26h6v4h-6zM13 33h14" stroke="#231F20" stroke-width="2.4" fill="#FFC93C"/>', 42);
+  var spark = S2('<path d="M20 3l3.5 11.5L35 18l-11.5 3.5L20 33l-3.5-11.5L5 18l11.5-3.5z" fill="#5FE0AE" stroke="#0B5E3F" stroke-width="1.6" stroke-linejoin="round"/>', 36);
+  var chat = S2('<path d="M6 8h28a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H17l-8 6v-6H6a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" fill="#fff" stroke="#00AF72" stroke-width="2.4"/><circle cx="13" cy="18" r="2" fill="#00AF72"/><circle cx="20" cy="18" r="2" fill="#00AF72"/><circle cx="27" cy="18" r="2" fill="#00AF72"/>', 42);
+  var heart = S2('<path d="M20 34s-14-8.5-14-18a7.5 7.5 0 0 1 14-4.2A7.5 7.5 0 0 1 34 16c0 9.5-14 18-14 18z" fill="#FF4D8D" stroke="#231F20" stroke-width="2"/>', 34);
   var decos = [
-    ['#nosotros', [[coin,'6%','18%',.35,''],[star,'90%','12%',-.25,''],[img('cheese',90),'84%','72%',.5,'hide-m'],[plus,'10%','78%',-.4,'hide-m']]],
-    ['#juegos', [[img('lettuce',100),'3%','6%',.45,'hide-m'],[coin,'94%','4%',-.3,''],[star,'96%','92%',.3,'hide-m']]],
-    ['#servicios', [[plus,'97%','2%',.35,'hide-m'],[coin,'1%','60%',-.35,'hide-m']]],
-    ['#trabajo', [[img('tomato',90),'92%','8%',.4,'hide-m'],[star,'2%','80%',-.3,'hide-m']]],
-    ['#contacto', [[coin,'4%','-6%',.3,''],[img('top',90),'90%','-10%',-.35,'hide-m']]]
+    ['#nosotros', [[pad,'6%','16%',.35,''],[cursor,'90%','14%',-.25,''],[spark,'86%','72%',.5,'hide-m'],[heart,'10%','76%',-.4,'hide-m']]],
+    ['#juegos', [[trophy,'3%','6%',.45,'hide-m'],[spark,'94%','4%',-.3,''],[play,'96%','92%',.3,'hide-m']]],
+    ['#servicios', [[code,'97%','2%',.35,'hide-m'],[chat,'1%','60%',-.35,'hide-m']]],
+    ['#trabajo', [[play,'92%','8%',.4,'hide-m'],[cursor,'2%','80%',-.3,'hide-m']]],
+    ['#contacto', [[chat,'4%','-6%',.3,''],[pad,'90%','-10%',-.35,'hide-m']]]
   ], parts = [];
   if (!reduce) decos.forEach(function(d){
     var host = document.querySelector(d[0]); if (!host) return; host.classList.add('deco-host');
