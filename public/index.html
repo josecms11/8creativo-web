@@ -424,8 +424,8 @@ button.scard:focus-visible{outline:3px solid var(--green)}
 
 
 /* menú fijo */
-.logo{display:block;height:46px;width:auto;transition:height .3s}
-.topbar.scrolled .logo{height:38px}
+.logo{display:block;height:46px;width:auto;transform-origin:left center;transition:transform .3s}
+.topbar.scrolled .logo{transform:scale(.84)}
 @media (max-width:720px){.logo{height:38px}}
 .topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:box-shadow .3s,background .3s}
 .topbar.scrolled{box-shadow:0 6px 24px rgba(39,48,107,.10);background:rgba(255,255,255,.94)}
@@ -980,6 +980,28 @@ a.hint:hover .ico{transform:translateX(4px)}
 /* titulares balanceados (sin palabras sueltas) */
 h1,h2,h3{text-wrap:balance}
 
+
+/* celular: subtítulos centrados y "Así de fácil" con aire */
+@media (max-width:720px){
+  .sec-head{flex-direction:column;align-items:stretch}
+  .sec-head p,.statement p{text-align:center;max-width:none;align-self:center}
+  .wins{padding:40px 0 0}
+  section.steps{margin-top:64px;padding-bottom:0}
+  section.work{margin-top:72px}
+  .steps h2{margin-bottom:0}
+  .stgrid{gap:22px;margin-top:32px}
+  .step{background:#F3F5F6;border-radius:22px;padding:20px 18px;gap:16px;align-items:center}
+  .step i{width:50px;height:50px;font-size:22px}
+  .step h3{margin:0 0 4px;font-size:22px}
+  .step p{font-size:16px}
+}
+
+
+/* ventanas de demos: posiciones originales y ritmo calmado */
+.pop{transition:opacity .7s ease,transform .8s cubic-bezier(.16,.84,.24,1);transform:translateY(10px)}
+.pop.own{top:110px;bottom:auto}
+.pop.cli{bottom:96px;top:auto}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -993,7 +1015,7 @@ h1,h2,h3{text-wrap:balance}
 
 <div class="topbar" id="topbar"><div class="xp" aria-hidden="true"><i id="xpFill"></i><b id="xpDot"></b></div><div class="xp-toast" id="xpToast" aria-hidden="true">+100 XP</div>
 <header class="wrap nav">
-  <a href="/" aria-label="8 Creativo, inicio"><img class="logo" src="/assets/img/logo-ocho-creativo.png" alt="Ocho Creativo" width="800" height="257"></a>
+  <a href="/" aria-label="8 Creativo, inicio"><img class="logo" src="/assets/img/logo-ocho-creativo.svg" alt="Ocho Creativo" width="416" height="135"></a>
   <nav class="nav-links" aria-label="Principal">
     <a class="txt" href="#juegos">Juegos</a>
     <a class="txt" href="#servicios">Servicios</a>
@@ -1275,7 +1297,6 @@ h1,h2,h3{text-wrap:balance}
           <div class="fr r4"><b>TE1</b><span class="fbar" style="--w:64%"></span><em>—</em></div>
         </div>
         <div class="fx-row2"><span class="fx-ss"><b>START</b> 87%</span><span class="fx-prem">★ PREMIUM</span></div>
-        <div class="fx-toast">Nueva nota exclusiva</div>
       </div>
       <div class="wk-txt">
         <small style="color:#7EE3B5">Plataforma con suscripciones</small>
@@ -1333,7 +1354,7 @@ h1,h2,h3{text-wrap:balance}
 </main>
 
 <footer class="wrap foot">
-  <img src="/assets/img/logo-ocho-creativo.png" alt="Ocho Creativo" width="800" height="257" style="height:40px;width:auto">
+  <img src="/assets/img/logo-ocho-creativo.svg" alt="Ocho Creativo" width="416" height="135" style="height:40px;width:auto">
   <b>Crear, crear y crear.</b>
   <nav aria-label="Contacto"><a class="js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/8creativo.agencia/" target="_blank" rel="noopener">Instagram</a><a href="mailto:hola@8creativo.info">hola@8creativo.info</a><span>Monterrey, N.L. · © <span id="yr">2026</span></span></nav>
 </footer>
@@ -1460,14 +1481,14 @@ h1,h2,h3{text-wrap:balance}
 
   // Ciclo de ventanas "Tu cliente gana" / "Tú ganas" en cada demo
   document.querySelectorAll('.gstage').forEach(function(g, i){
-    var states = ['cli', '', 'own', ''], durs = [3400, 500, 3600, 500], k = 0, hover = false;
+    var states = ['cli', '', 'own', ''], durs = [5200, 1400, 5200, 1400], k = 0, hover = false;
     g.addEventListener('mouseenter', function(){ hover = true; });
     g.addEventListener('mouseleave', function(){ hover = false; });
     function next(){
       if (!hover && !g.closest('.offscreen')) { k = (k + 1) % states.length; g.dataset.s = states[k]; }
       setTimeout(next, durs[k]);
     }
-    setTimeout(function(){ g.dataset.s = 'cli'; setTimeout(next, durs[0]); }, 700 + i * 450);
+    setTimeout(function(){ g.dataset.s = 'cli'; setTimeout(next, durs[0]); }, 900 + i * 1600);
   });
 
   // Menú fijo: sombra al bajar y sección activa
