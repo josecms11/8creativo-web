@@ -263,12 +263,12 @@ a{color:var(--navy)}a:hover{color:#007A50}
 /* WORK */
 .work{padding:0 0 110px}
 .wkgrid{display:flex;flex-wrap:wrap;gap:24px;margin-top:44px}
-.wk{flex:1 1 360px;text-decoration:none;color:#fff;border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:12px;min-height:240px;transition:transform .35s cubic-bezier(.16,.84,.24,1)}
+.wk{flex:1 1 420px;text-decoration:none;color:#fff;border-radius:28px;padding:0;display:flex;flex-direction:column;gap:0;min-height:240px;transition:transform .35s cubic-bezier(.16,.84,.24,1)}
 .wk:hover{transform:translateY(-8px);color:#fff}
-.wk small{font-size:14px;font-weight:700}
-.wk b{font-family:Nunito,sans-serif;font-weight:900;font-size:38px;line-height:1}
-.wk span{font-size:17px;line-height:1.5}
-.wk em{margin-top:auto;font-style:normal;font-weight:700}
+.wk-txt small{font-size:14px;font-weight:700}
+
+
+
 
 /* FAQ */
 .faq{max-width:min(1000px,92vw);margin:0 auto;padding:0 24px 110px}
@@ -871,6 +871,31 @@ section[id]{scroll-margin-top:96px}
   background:conic-gradient(from var(--ang),transparent 0 60%,var(--glow) 76%,#fff 83%,var(--glow) 90%,transparent 100%);
   filter:drop-shadow(0 0 5px var(--glow)) drop-shadow(0 0 12px var(--glow));animation-duration:4.5s}
 
+
+/* --- neón SVG en tarjetas (reemplaza el anterior) --- */
+.services .scard::after{display:none!important}
+[data-pn="juegos"]{--glow:#FFE08A}[data-pn="apps"]{--glow:#B9A8FF}[data-pn="contenido"]{--glow:#FFA3C4}
+.snake{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;opacity:0;transition:opacity .35s}
+.snake rect{width:calc(100% - 4px);height:calc(100% - 4px);fill:none;stroke:var(--glow);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:16 84;filter:drop-shadow(0 0 4px var(--glow)) drop-shadow(0 0 10px var(--glow));animation:snk 4.5s linear infinite;animation-play-state:paused}
+@keyframes snk{to{stroke-dashoffset:-100}}
+.services .scard:hover .snake,.services .scard:focus-visible .snake,.services .scard[aria-selected="true"] .snake{opacity:1}
+.services .scard:hover .snake rect,.services .scard:focus-visible .snake rect,.services .scard[aria-selected="true"] .snake rect{animation-play-state:running}
+.services .scard[aria-selected="true"] .snake rect{stroke:#fff;filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 10px var(--glow))}
+.services .scard[aria-selected="true"]{box-shadow:0 24px 50px rgba(35,31,32,.14)!important}
+/* --- portafolio: estructura --- */
+.wk-mock{height:auto;min-height:240px}
+.wk-mock b,.wk-mock span,.wk-mock small,.wk-mock em,.wk-mock i{line-height:1.2}
+.fx-rank{height:116px;flex:0 0 auto}
+.fr b{font-size:11px;font-weight:900;font-family:inherit}
+.fx-live small{font-size:11px}
+.fx-live small b{color:#5FE0AE}
+.fx-toast{top:auto;bottom:48px;right:14px}
+.fx-row2{margin-top:6px}
+.bz-sc b{font-size:15px;margin-left:4px}
+.bz-field{min-height:150px}
+.bz-hud span{font-size:13px}
+.wk-txt span{display:block}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -990,7 +1015,7 @@ section[id]{scroll-margin-top:96px}
         <div class="gstage">
           <div class="mini" aria-hidden="true"><div class="mscreen" style="background:#FF6B2C;color:#231F20">
             <div class="mbar" style="background:#231F20;color:#fff"><span class="brand"><i style="background:#FF6B2C;color:#231F20">F</i>FIT ZONE</span><b style="background:#FF6B2C;color:#231F20">0:12</b></div>
-            <div class="ring sm"><svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="50" cy="50" r="42" fill="none" stroke="#231F20" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" style="animation:ringA 6s linear infinite"/></svg><div><b class="cnt c142"></b>toques</div></div>
+            <div class="ring sm"><svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="50" cy="50" r="42" fill="none" stroke="#231F20" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" style="animation:ringA 6s linear infinite"/></svg><div><b class="jsn" data-to="142" data-dur="4200" data-hold="1800">0</b>toques</div></div>
             <div class="race"><span>Récord del gym · 128</span><div><i></i></div></div>
             <div class="live"><span class="live-t"><i></i>EN VIVO</span>
               <div class="lrow r1"><b>A</b>Andrea<em>131</em></div>
@@ -1023,7 +1048,7 @@ section[id]{scroll-margin-top:96px}
             <span class="confetti" style="left:12%;background:#FF4D8D;animation-delay:-.2s"></span><span class="confetti" style="left:38%;background:#FFD23F;animation-delay:-1.1s"></span><span class="confetti" style="left:64%;background:#3A86FF;animation-delay:-2s"></span><span class="confetti" style="left:88%;background:#9BD12B;animation-delay:-.6s"></span>
           </div></div>
           <div class="pop cli"><span class="tag">Tu cliente gana</span><b>Acceso anticipado</b> y 15% en el lanzamiento.</div>
-          <div class="pop own"><span class="tag">Tú ganas</span><b>Lista de espera</b><span class="big cnt c1240"></span><small>personas listas para comprar</small></div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Lista de espera</b><span class="big jsn" data-to="1240" data-dur="3000" data-hold="4000" data-delay="1500">0</span><small>personas listas para comprar</small></div>
         </div>
         <figcaption><strong>Marca de ropa</strong><span class="cap">Que tu drop se agote</span></figcaption>
       </figure>
@@ -1056,18 +1081,21 @@ section[id]{scroll-margin-top:96px}
       <h3>Juegos de marca</h3>
       <p>Campañas de marketing que tus clientes juegan, comparten y te dejan sus datos.</p>
       <span class="more">Ver más <i>+</i></span>
+      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-apps" aria-controls="pn-apps" aria-selected="false" data-pn="apps">
       <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 14l-2 1.5L9 17M15 14l2 1.5-2 1.5"/></svg></span>
       <h3>Apps y plataformas</h3>
       <p>Desde una página web que vende hasta una app completa para tu negocio.</p>
       <span class="more">Ver más <i>+</i></span>
+      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
     </button>
     <button type="button" class="scard rv" role="tab" id="tab-contenido" aria-controls="pn-contenido" aria-selected="false" data-pn="contenido">
       <span class="sico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 11l5-3v8l-5-3"/></svg></span>
       <h3>Contenido e IA</h3>
       <p>Foto, video, cursos y portales creados con inteligencia artificial.</p>
       <span class="more">Ver más <i>+</i></span>
+      <svg class="snake" aria-hidden="true"><rect x="2" y="2" rx="26" ry="26" pathLength="100"></rect></svg>
     </button>
   </div>
 
@@ -1155,7 +1183,7 @@ section[id]{scroll-margin-top:96px}
           <span class="fx-logo"><i>F</i><span>FANTASY</span><em>EXPERTOS</em></span>
           <span class="fx-sw"><i>PPR</i><i>HALF</i><i>STD</i><u></u></span>
         </div>
-        <div class="fx-live"><span><i></i>EN VIVO</span><small>Actualizado hace <b class="fx-min"></b> min</small></div>
+        <div class="fx-live"><span><i></i>EN VIVO</span><small>Actualizado hace <b class="jsn" data-to="0" data-from="3" data-dur="4500" data-hold="1500">3</b> min</small></div>
         <div class="fx-rank">
           <div class="fr r1"><b>QB1</b><span class="fbar" style="--w:94%"></span><em class="up">▲2</em></div>
           <div class="fr r2"><b>RB1</b><span class="fbar" style="--w:86%"></span><em class="dn">▼1</em></div>
@@ -1175,7 +1203,7 @@ section[id]{scroll-margin-top:96px}
     <a class="wk wk-bz" href="https://blitz-games.8creativo-agencia.workers.dev" target="_blank" rel="noopener">
       <div class="wk-bg" aria-hidden="true"><span class="lights"></span><b>BLITZ</b></div>
       <div class="wk-mock bz" aria-hidden="true">
-        <div class="bz-hud"><span>BLITZ RUN</span><span class="bz-sc">SCORE <b class="bz-n"></b></span></div>
+        <div class="bz-hud"><span>BLITZ RUN</span><span class="bz-sc">SCORE <b class="jsn" data-to="4820" data-dur="5500" data-hold="1000">0</b></span></div>
         <div class="bz-field">
           <span class="bz-l l1"></span><span class="bz-l l2"></span><span class="bz-l l3"></span>
           <span class="bz-coin c1"></span><span class="bz-coin c2"></span><span class="bz-coin c3"></span>
@@ -1315,6 +1343,21 @@ section[id]{scroll-margin-top:96px}
   }
   window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive:true});
   window.addEventListener('resize', frame); frame();
+
+
+  // Contadores animados (en JS para que funcionen en todos los navegadores)
+  document.querySelectorAll('.jsn').forEach(function(el){
+    var to = +el.dataset.to, from = +(el.dataset.from || 0), dur = +el.dataset.dur || 3000, hold = +el.dataset.hold || 1500, delay = +(el.dataset.delay || 0);
+    function run(){
+      var t0 = performance.now();
+      (function step(now){
+        var k = Math.min(1, (now - t0) / dur), v = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+        el.textContent = v.toLocaleString('en-US');
+        if (k < 1) requestAnimationFrame(step); else setTimeout(run, hold);
+      })(t0);
+    }
+    setTimeout(run, delay);
+  });
 
   // Menú fijo: sombra al bajar y sección activa
   var topbar = document.getElementById('topbar');
