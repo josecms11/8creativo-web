@@ -1093,6 +1093,21 @@ section.cta{margin-top:28px}
   section.cta{margin-top:80px}
 }
 
+
+/* celular: portada centrada */
+@media (max-width:720px){
+  .hero-copy{align-items:center;text-align:center}
+  .hero-copy .pill{align-self:center}
+  .hero-copy .lead{margin:0 auto}
+  .hero-ctas{justify-content:center;flex-direction:column;gap:14px}
+}
+/* panel dentro de la lista de tarjetas (celular) */
+.sgrid > .drawer.open{margin-top:0}
+/* pasos 1-2-3 en web con el mismo estilo de tarjeta que en celular */
+.step{background:#F3F5F6;border-radius:24px;padding:24px 22px;gap:18px;align-items:center;transition:transform .35s cubic-bezier(.16,.84,.24,1),box-shadow .35s}
+.step:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(39,48,107,.10)}
+.step h3{margin:0 0 4px}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -1599,6 +1614,11 @@ section.cta{margin-top:28px}
     cur = k;
     tabs.forEach(function(t){ var on = t.dataset.pn === k; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.setAttribute('aria-expanded', on ? 'true' : 'false'); });
     document.querySelectorAll('.panel').forEach(function(p){ var on = p.id === 'pn-' + k; p.hidden = !on; p.classList.remove('show'); if (on) { void p.offsetWidth; p.classList.add('show'); } });
+    // En celular (tarjetas apiladas) el panel se abre justo debajo de su tarjeta
+    var card = document.querySelector('.scard[data-pn="' + k + '"]'), grid = card.parentNode, home = grid.parentNode;
+    var stacked = tabs.length > 1 && Math.abs(tabs[0].offsetTop - tabs[1].offsetTop) > 5;
+    if (stacked) { if (card.nextElementSibling !== drawer) card.after(drawer); }
+    else if (drawer.parentNode !== home) grid.after(drawer);
     drawer.classList.add('open');
     if (scroll && mq('(max-width:820px)')) setTimeout(function(){ drawer.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 300);
   }
