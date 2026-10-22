@@ -420,6 +420,17 @@ button.scard:focus-visible{outline:3px solid var(--green)}
 .pmock .course .mods li{color:#fff}
 @media (max-width:820px){.panel{grid-template-columns:1fr}.mix{flex-direction:column}}
 
+
+/* menú fijo */
+.topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:box-shadow .3s,background .3s}
+.topbar.scrolled{box-shadow:0 6px 24px rgba(39,48,107,.10);background:rgba(255,255,255,.94)}
+.topbar .nav{transition:padding .3s}
+.topbar.scrolled .nav{padding-top:12px;padding-bottom:12px}
+.nav-links a.txt{position:relative}
+.nav-links a.txt::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:2px;background:var(--green);transform:scaleX(0);transition:transform .3s}
+.nav-links a.txt.active::after,.nav-links a.txt:hover::after{transform:scaleX(1)}
+section[id]{scroll-margin-top:96px}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -431,6 +442,7 @@ button.scard:focus-visible{outline:3px solid var(--green)}
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
 
+<div class="topbar" id="topbar">
 <header class="wrap nav">
   <a href="/" aria-label="8 Creativo, inicio"><img src="/assets/img/logo-8creativo.png" alt="8 Creativo" width="148" height="34" style="height:34px;width:auto"></a>
   <nav class="nav-links" aria-label="Principal">
@@ -441,6 +453,7 @@ button.scard:focus-visible{outline:3px solid var(--green)}
     <a class="btn btn-navy js-wa" href="https://wa.me/528187083082" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg>WhatsApp</a>
   </nav>
 </header>
+</div>
 
 <main id="contenido">
 <section class="wrap hero">
@@ -728,6 +741,17 @@ button.scard:focus-visible{outline:3px solid var(--green)}
   cols.forEach(function(c, k){ mh += '<div class="card8" style="animation-delay:-' + ((k * 0.37) % 4.5).toFixed(2) + 's"><div class="front"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z" fill="' + c + '"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="' + c + '" stroke-width="2"/></svg></div><div class="back">8</div></div>'; });
   document.getElementById('memo').innerHTML = mh;
 
+
+
+  // Menú fijo: sombra al bajar y sección activa
+  var topbar = document.getElementById('topbar');
+  function onScroll(){ topbar.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  if ('IntersectionObserver' in window) {
+    var links = {}; document.querySelectorAll('.nav-links a.txt').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting && links[e.target.id]) { Object.keys(links).forEach(function(k){ links[k].classList.toggle('active', k === e.target.id); }); } }); }, {rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(links).forEach(function(k){ var s = document.getElementById(k); if (s) io.observe(s); });
+  }
 
   // Tarjetas desplegables de servicios
   var tabs = document.querySelectorAll('.scard[data-pn]'), drawer = document.getElementById('drawer'), cur = null, hoverT;
