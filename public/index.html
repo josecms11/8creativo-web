@@ -591,7 +591,7 @@ section[id]{scroll-margin-top:96px}
 .lrow b{width:16px;height:16px;border-radius:50%;background:#231F20;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:9px}
 .lrow em{margin-left:auto;font-style:normal}
 .lrow.me{background:#231F20;color:#fff}.lrow.me b{background:#FF6B2C}
-.r1{animation:lr1 6s ease-in-out infinite}.r2{animation:lr2 6s ease-in-out infinite}.r3{animation:lr3 6s ease-in-out infinite}
+.lr1x{animation:lr1 6s ease-in-out infinite}.lr2x{animation:lr2 6s ease-in-out infinite}.lr3x{animation:lr3 6s ease-in-out infinite}
 @keyframes lr1{0%,45%{top:18px}60%,100%{top:44px}}
 @keyframes lr2{0%,45%{top:44px}60%,100%{top:70px}}
 @keyframes lr3{0%,45%{top:70px}60%,100%{top:18px}}
@@ -1050,6 +1050,14 @@ h1,h2,h3{text-wrap:balance}
   .statement h2{font-size:38px}
 }
 
+
+/* Fit Zone: "EN VIVO" sin empalmarse con el ranking */
+.live{height:104px}
+.live-t{display:flex;height:16px}
+@keyframes lr1{0%,45%{top:24px}60%,100%{top:51px}}
+@keyframes lr2{0%,45%{top:51px}60%,100%{top:78px}}
+@keyframes lr3{0%,45%{top:78px}60%,100%{top:24px}}
+
 /* Pantallas grandes: todo crece en proporción */
 @media (min-width:1700px){.phone,.mini{zoom:1.15}.scard h3{font-size:34px}.scard p,.wgrid span,.step p,.wk span,.faq p{font-size:20px}.wgrid b{font-size:40px}.nav-links{font-size:18px}.btn{font-size:20px;padding:18px 32px}}
 @media (min-width:2200px){.phone,.mini{zoom:1.32}.ggrid{gap:44px}}
@@ -1172,14 +1180,14 @@ h1,h2,h3{text-wrap:balance}
             <div class="ring sm"><svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="8"/><circle cx="50" cy="50" r="42" fill="none" stroke="#231F20" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" style="animation:ringA 6s linear infinite"/></svg><div><b class="jsn" data-to="142" data-dur="4200" data-hold="1800">0</b>toques</div></div>
             <div class="race"><span>Récord del gym · 128</span><div><i></i></div></div>
             <div class="live"><span class="live-t"><i></i>EN VIVO</span>
-              <div class="lrow r1"><b>A</b>Andrea<em>131</em></div>
-              <div class="lrow r2"><b>M</b>Marco<em>125</em></div>
-              <div class="lrow r3 me"><b>T</b>Tú<em>142</em></div>
+              <div class="lrow lr1x"><b>A</b>Andrea<em>131</em></div>
+              <div class="lrow lr2x"><b>M</b>Marco<em>125</em></div>
+              <div class="lrow lr3x me"><b>T</b>Tú<em>142</em></div>
             </div>
             <div class="tapbtn sm"><span class="ripple"></span><span class="tapcore">¡TOCA!</span></div>
           </div></div>
           <div class="pop cli"><span class="tag">Tu cliente gana</span><b>Pase de 7 días gratis</b> y su clase de prueba agendada.</div>
-          <div class="pop own"><span class="tag">Tú ganas</span><b>Prospectos nuevos</b><span class="leads"><i>Andrea · WhatsApp ✓</i><i>Marco · WhatsApp ✓</i><i>Tú · WhatsApp ✓</i></span></div>
+          <div class="pop own"><span class="tag">Tú ganas</span><b>Prospectos nuevos</b><span class="leads"><i>Andrea · WhatsApp ✓</i><i>Marco · WhatsApp ✓</i><i>Valeria · WhatsApp ✓</i></span></div>
         </div>
         <figcaption><strong>Gimnasio</strong><span class="cap">Convierte curiosos en socios</span></figcaption>
       </figure>
@@ -1529,7 +1537,7 @@ h1,h2,h3{text-wrap:balance}
 
   // Ciclo de ventanas "Tu cliente gana" / "Tú ganas" en cada demo
   document.querySelectorAll('.gstage').forEach(function(g, i){
-    var states = ['cli', '', 'own', ''], durs = [5200, 1400, 5200, 1400], k = 0, hover = false;
+    var states = ['cli', 'own'], durs = [3500, 3500], k = 0, hover = false;
     g.addEventListener('mouseenter', function(){ hover = true; });
     g.addEventListener('mouseleave', function(){ hover = false; });
     function next(){
