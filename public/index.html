@@ -1052,6 +1052,20 @@ section[id]{scroll-margin-top:96px}
 
 <script>
 (function(){
+
+  // Siempre abrir arriba (sin saltar a la última sección visitada)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo(0, 0);
+  window.addEventListener('load', function(){ window.scrollTo(0, 0); });
+  // Enlaces internos: desplazamiento suave sin agregar #sección a la dirección
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href').slice(1); if (!id) return;
+      var t = document.getElementById(id); if (!t) return;
+      ev.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
   // WhatsApp con mensaje prellenado
   var WA = 'https://wa.me/528187083082?text=' + encodeURIComponent('Hola 8 Creativo, quiero platicar de un proyecto para mi marca');
   document.querySelectorAll('.js-wa').forEach(function(a){ a.href = WA; });
