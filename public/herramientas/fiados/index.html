@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuaderno de fiados gratis para tu tienda | 8 Creativo</title>
+<meta name="description" content="Lleva el fiado de tu tiendita sin papel: anota lo que te deben, registra abonos y manda el saldo por WhatsApp. Gratis y sin registro.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://8creativo.info/herramientas/fiados/">
+<style>
+@font-face{font-family:Nunito;font-weight:900;font-display:swap;src:url(/assets/fonts/nunito-latin-900-normal.woff2) format("woff2")}@font-face{font-family:Arimo;font-weight:400;font-display:swap;src:url(/assets/fonts/arimo-latin-400-normal.woff2) format("woff2")}@font-face{font-family:Arimo;font-weight:700;font-display:swap;src:url(/assets/fonts/arimo-latin-700-normal.woff2) format("woff2")}h1,h2{font-family:Nunito,system-ui,sans-serif;font-weight:900}:root{--bg:#f7fbf8;--fg:#231F20;--muted:#55605a;--card:#fff;--line:#dfe9e3;--acc:#0B5E3F;--ok:#1f8a4c;--warn:#b4421f}
+@media (prefers-color-scheme:dark){:root{--bg:#121217;--fg:#f1f1f4;--muted:#a3a3b2;--card:#1b1b22;--line:#2c2c36;--acc:#5FE0AE;--ok:#3ccf7d;--warn:#ff8a65}}
+*{box-sizing:border-box}body{margin:0;font-family:Arimo,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5}
+main{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:8px 0}
+.lead{color:var(--muted);font-size:18px;margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px}
+label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+button{background:var(--acc);color:#fff;border:0;border-radius:999px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer;margin-top:14px}
+button.sec{background:transparent;color:var(--fg);border:1px solid var(--line)}
+button.sm{padding:6px 12px;margin:0;font-size:14px}
+.total{font-size:15px;color:var(--muted)}.total b{font-size:28px;color:var(--warn);display:block}
+.cli{border-top:1px solid var(--line);padding:14px 0}
+.cli h3{margin:0;display:flex;justify-content:space-between;gap:8px;font-size:18px}
+.saldo{color:var(--warn)}.saldo.cero{color:var(--ok)}
+.mov{font-size:14px;color:var(--muted);margin:6px 0 8px;padding-left:18px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.faq h3{font-size:17px;margin:18px 0 4px}.faq p{margin:0;color:var(--muted)}
+footer{color:var(--muted);font-size:14px;text-align:center;margin-top:40px}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Cuaderno de fiados","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"es-MX","offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"}}
+</script>
+</head>
+<body>
+<main>
+<h1>Cuaderno de fiados gratis</h1>
+<p class="lead">Anota lo que te deben tus clientes, registra sus abonos y mándales su saldo por WhatsApp. Se guarda en tu celular, sin registro.</p>
+
+<form class="card" id="f">
+  <div class="row">
+    <div><label for="cliente">Cliente</label><input id="cliente" list="clientes" placeholder="Doña Lupe" required><datalist id="clientes"></datalist></div>
+    <div><label for="tipo">Movimiento</label><select id="tipo"><option value="fiado">Fiado (me debe)</option><option value="abono">Abono (me pagó)</option></select></div>
+    <div><label for="monto">Monto (MXN)</label><input id="monto" type="number" min="1" step="0.5" placeholder="120" required></div>
+  </div>
+  <label for="nota">Nota (opcional)</label><input id="nota" placeholder="Leche, pan y huevo">
+  <button type="submit">Guardar</button>
+</form>
+
+<section class="card">
+  <div class="total">Total que te deben<b id="total">$0</b></div>
+  <div id="lista"></div>
+</section>
+
+<section class="faq">
+  <h2>Cómo llevar el fiado sin perder dinero</h2>
+  <h3>¿Por qué no en libreta?</h3>
+  <p>La libreta se pierde, se moja y no suma sola. Aquí ves en segundos cuánto te debe cada cliente y el total de tu tienda.</p>
+  <h3>¿Cómo le cobro a un cliente?</h3>
+  <p>Toca "Mandar saldo" y se abre WhatsApp con el detalle de lo que debe, listo para enviar.</p>
+  <h3>¿Pongo un límite de fiado?</h3>
+  <p>Es buena práctica: decide un máximo por cliente y no fíes más hasta que abone.</p>
+  <h3>¿Mis datos están seguros?</h3>
+  <p>Se guardan solo en este celular o computadora. Si cambias de equipo, usa "Respaldar" para descargar tu cuaderno.</p>
+</section>
+
+<footer>Hecho por <a href="/">8 Creativo</a>. ¿Quieres un sistema completo de ventas e inventario para tu tienda? <a href="https://wa.me/528187083082">Escríbenos por WhatsApp</a>.</footer>
+</main>
+
+<script>
+const K='fiados-v1',$=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN',minimumFractionDigits:0,maximumFractionDigits:2});
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function load(){try{return JSON.parse(localStorage.getItem(K))||{}}catch(e){return {}}}
+function save(d){try{localStorage.setItem(K,JSON.stringify(d))}catch(e){}}
+let D=load();
+const saldo=m=>m.reduce((s,x)=>s+(x.t==='fiado'?x.m:-x.m),0);
+function render(){
+  const nombres=Object.keys(D).sort((a,b)=>saldo(D[b])-saldo(D[a]));
+  $('clientes').innerHTML=nombres.map(n=>`<option value="${esc(n)}">`).join('');
+  $('total').textContent=fmt(nombres.reduce((s,n)=>s+Math.max(0,saldo(D[n])),0));
+  $('lista').innerHTML=nombres.length?nombres.map(n=>{const s=saldo(D[n]);const ult=D[n].slice(-3).reverse();
+    return `<div class="cli"><h3><span>${esc(n)}</span><span class="saldo ${s<=0?'cero':''}">${s<=0?'Al corriente':fmt(s)}</span></h3>
+    <ul class="mov">${ult.map(x=>`<li>${x.f} · ${x.t==='fiado'?'Fió':'Abonó'} ${fmt(x.m)}${x.n?' · '+esc(x.n):''}</li>`).join('')}</ul>
+    <div class="acts"><button class="sm" data-wa="${esc(n)}">Mandar saldo</button><button class="sm sec" data-del="${esc(n)}">Borrar cliente</button></div></div>`}).join('')
+    +`<div class="acts" style="margin-top:12px"><button class="sm sec" id="resp">Respaldar cuaderno</button></div>`
+    :'<p class="total">Todavía no hay movimientos. Agrega el primero arriba.</p>';
+}
+$('f').addEventListener('submit',e=>{e.preventDefault();const n=$('cliente').value.trim();if(!n)return;
+  (D[n]=D[n]||[]).push({t:$('tipo').value,m:+$('monto').value,n:$('nota').value.trim(),f:new Date().toLocaleDateString('es-MX',{day:'numeric',month:'short'})});
+  save(D);$('monto').value='';$('nota').value='';render()});
+$('lista').addEventListener('click',e=>{const b=e.target;
+  if(b.dataset.wa){const n=b.dataset.wa,s=saldo(D[n]);
+    const txt=`Hola ${n}, este es tu saldo pendiente: *${fmt(Math.max(0,s))}*\n\nÚltimos movimientos:\n`+D[n].slice(-5).map(x=>`${x.f}: ${x.t==='fiado'?'fiado':'abono'} ${fmt(x.m)}${x.n?' ('+x.n+')':''}`).join('\n')+`\n\n¡Gracias!`;
+    open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')}
+  if(b.dataset.del&&confirm('¿Borrar a '+b.dataset.del+' y todo su historial?')){delete D[b.dataset.del];save(D);render()}
+  if(b.id==='resp'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D,null,1)],{type:'application/json'}));a.download='cuaderno-fiados.json';a.click()}
+});
+render();
+</script>
+</body>
+</html>
