@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control de tandas gratis: calendario de pagos y turnos | 8 Creativo</title>
+<meta name="description" content="Organiza tu tanda gratis: calcula cuánto recibe cada quien, genera el calendario de turnos y marca quién ya pagó. Compártelo por WhatsApp. Sin registro.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://8creativo.info/herramientas/tandas/">
+<style>
+@font-face{font-family:Nunito;font-weight:900;font-display:swap;src:url(/assets/fonts/nunito-latin-900-normal.woff2) format("woff2")}@font-face{font-family:Arimo;font-weight:400;font-display:swap;src:url(/assets/fonts/arimo-latin-400-normal.woff2) format("woff2")}@font-face{font-family:Arimo;font-weight:700;font-display:swap;src:url(/assets/fonts/arimo-latin-700-normal.woff2) format("woff2")}h1,h2{font-family:Nunito,system-ui,sans-serif;font-weight:900}:root{--bg:#f7fbf8;--fg:#231F20;--muted:#55605a;--card:#fff;--line:#dfe9e3;--acc:#0B5E3F;--ok:#1f8a4c}
+@media (prefers-color-scheme:dark){:root{--bg:#121217;--fg:#f1f1f4;--muted:#a3a3b2;--card:#1b1b22;--line:#2c2c36;--acc:#5FE0AE;--ok:#3ccf7d}}
+*{box-sizing:border-box}body{margin:0;font-family:Arimo,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5}
+main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:8px 0}
+.lead{color:var(--muted);font-size:18px;margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit}
+textarea{min-height:120px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+button{background:var(--acc);color:#fff;border:0;border-radius:999px;padding:12px 20px;font-weight:700;font:inherit;font-weight:700;cursor:pointer;margin-top:16px}
+button.sec{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.sum div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.sum b{display:block;font-size:22px}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;white-space:nowrap}
+td.c{text-align:center}input[type=checkbox]{width:18px;height:18px;accent-color:var(--ok)}
+.done{color:var(--ok);font-weight:700}
+.faq h3{font-size:17px;margin:18px 0 4px}.faq p{margin:0;color:var(--muted)}
+footer{color:var(--muted);font-size:14px;text-align:center;margin-top:40px}
+@media print{form,.noprint,footer,.faq{display:none}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Control de tandas","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"es-MX","offers":{"@type":"Offer","price":"0","priceCurrency":"MXN"}}
+</script>
+</head>
+<body>
+<main>
+<h1>Control de tandas gratis</h1>
+<p class="lead">Arma el calendario de tu tanda en un minuto: quién recibe y cuándo, cuánto se junta y quién ya pagó. Sin registro; se guarda en tu celular.</p>
+
+<form class="card" id="f">
+  <div class="row">
+    <div><label for="nombre">Nombre de la tanda</label><input id="nombre" placeholder="Tanda de la oficina" required></div>
+    <div><label for="monto">Aportación por persona (MXN)</label><input id="monto" type="number" min="1" step="1" placeholder="500" required></div>
+  </div>
+  <div class="row">
+    <div><label for="freq">Frecuencia</label>
+      <select id="freq"><option value="7">Semanal</option><option value="14" selected>Quincenal</option><option value="30">Mensual</option></select></div>
+    <div><label for="inicio">Fecha del primer pago</label><input id="inicio" type="date" required></div>
+  </div>
+  <label for="gente">Participantes, uno por línea y en el orden en que reciben</label>
+  <textarea id="gente" placeholder="Ana&#10;Luis&#10;María&#10;Pedro" required></textarea>
+  <button type="submit">Generar calendario</button>
+</form>
+
+<section class="card" id="res" hidden>
+  <h2 id="tit"></h2>
+  <div class="sum" id="sum"></div>
+  <div class="tw"><table id="tab"></table></div>
+  <div class="noprint">
+    <button type="button" id="wa">Compartir por WhatsApp</button>
+    <button type="button" class="sec" onclick="print()">Imprimir o guardar PDF</button>
+    <button type="button" class="sec" id="borrar">Empezar otra tanda</button>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Cómo funciona una tanda</h2>
+  <p>Una tanda es un ahorro en grupo: cada participante aporta la misma cantidad en cada periodo y, por turnos, una persona recibe todo lo reunido. Al terminar, todos aportaron y recibieron lo mismo.</p>
+  <h3>¿Cuánto recibe cada persona?</h3>
+  <p>La aportación por el número de participantes. Ejemplo: 10 personas que ponen $500 quincenales reciben $5,000 cada una en su turno.</p>
+  <h3>¿Cuánto dura la tanda?</h3>
+  <p>Tantos periodos como participantes. Con 10 personas y pagos quincenales, dura 10 quincenas, unos 5 meses.</p>
+  <h3>¿Qué número conviene?</h3>
+  <p>Los primeros números reciben antes, como un préstamo sin intereses; los últimos ahorran. Elijan el orden por sorteo o acuerdo y déjenlo por escrito aquí.</p>
+  <h3>¿Mis datos se guardan en internet?</h3>
+  <p>No. Todo se guarda solo en el navegador de tu celular o computadora.</p>
+</section>
+
+<footer>Hecho por <a href="/">8 Creativo</a>. ¿Necesitas una app para tu negocio? <a href="https://wa.me/528187083082">Escríbenos por WhatsApp</a>.</footer>
+</main>
+
+<script>
+const K='tanda-v1',$=id=>document.getElementById(id);
+const fmt=n=>n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});
+const fdate=d=>d.toLocaleDateString('es-MX',{day:'numeric',month:'short',year:'numeric'});
+function addDays(s,n){const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return d}
+function addMonths(s,n){const d=new Date(s+'T12:00:00');d.setMonth(d.getMonth()+n);return d}
+function load(){try{return JSON.parse(localStorage.getItem(K))}catch(e){return null}}
+function save(t){try{localStorage.setItem(K,JSON.stringify(t))}catch(e){}}
+function fechas(t){return t.gente.map((_,i)=>t.freq==30?addMonths(t.inicio,i):addDays(t.inicio,i*t.freq))}
+function render(t){
+  const n=t.gente.length,bolsa=t.monto*n,fs=fechas(t);
+  $('tit').textContent=t.nombre;
+  const pagados=t.pagos.flat().filter(Boolean).length;
+  $('sum').innerHTML=`<div>Recibe cada quien<b>${fmt(bolsa)}</b></div><div>Participantes<b>${n}</b></div><div>Termina<b>${fdate(fs[n-1])}</b></div><div>Pagos registrados<b>${pagados} de ${n*n}</b></div>`;
+  let h='<tr><th>#</th><th>Fecha</th><th>Recibe</th>'+t.gente.map(g=>`<th>${esc(g)}</th>`).join('')+'</tr>';
+  fs.forEach((f,i)=>{const ok=t.pagos[i].every(Boolean);
+    h+=`<tr><td>${i+1}</td><td>${fdate(f)}</td><td class="${ok?'done':''}">${esc(t.gente[i])}${ok?' ✓':''}</td>`+
+    t.gente.map((_,j)=>`<td class="c"><input type="checkbox" aria-label="${esc(t.gente[j])} pagó turno ${i+1}" data-i="${i}" data-j="${j}" ${t.pagos[i][j]?'checked':''}></td>`).join('')+'</tr>'});
+  $('tab').innerHTML=h;$('res').hidden=false;
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+$('f').addEventListener('submit',e=>{e.preventDefault();
+  const gente=$('gente').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  if(gente.length<2){alert('Agrega al menos 2 participantes');return}
+  const t={nombre:$('nombre').value.trim(),monto:+$('monto').value,freq:+$('freq').value,inicio:$('inicio').value,gente,pagos:gente.map(()=>gente.map(()=>false))};
+  save(t);render(t);$('res').scrollIntoView({behavior:'smooth'})});
+$('tab').addEventListener('change',e=>{const t=load();if(!t||!e.target.dataset.i)return;
+  t.pagos[e.target.dataset.i][e.target.dataset.j]=e.target.checked;save(t);render(t)});
+$('wa').addEventListener('click',()=>{const t=load();if(!t)return;const fs=fechas(t);
+  const txt=`*${t.nombre}*\nAportación: ${fmt(t.monto)} · Recibe cada quien: ${fmt(t.monto*t.gente.length)}\n\n`+t.gente.map((g,i)=>`${i+1}. ${fdate(fs[i])} → ${g}`).join('\n')+`\n\nHecho con el control de tandas gratis de 8 Creativo`;
+  open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')});
+$('borrar').addEventListener('click',()=>{try{localStorage.removeItem(K)}catch(e){}$('res').hidden=true;$('f').reset();scrollTo(0,0)});
+$('inicio').valueAsDate=new Date();
+const t0=load();if(t0)render(t0);
+</script>
+</body>
+</html>
